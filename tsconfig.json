@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    // ...
+    "rootDir": "src",
+    "outDir": "dist",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "lib": ["es2015","dom"],
+    // ...
+  },
+}
