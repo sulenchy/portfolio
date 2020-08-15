@@ -1,9 +1,11 @@
 // message.ts
 import * as React from 'react';
+import WelcomeImage from './public/images/welcomeImage.jpeg';
 
 export default class main extends React.Component {
   copyright: Date = new Date();
 
+  
   render () {
     return (
       <div>
@@ -23,8 +25,13 @@ export default class main extends React.Component {
           </nav>
         </header>
         <section id="welcome-section">
-          <h1>Hey I'm Sulenchy</h1>
-          <p className="text-green"><span className="profession"></span> I am a meticulous software engineer who loves using technology to be creative, innovative and solve real problems. I have 3+ years of experience in software engineering. I love getting things better.</p>
+          <div className="col-half">
+            <h1>Hey I'm Sulenchy</h1>
+            <p className="text-green"><span className="profession"></span> I am a meticulous software engineer who loves using technology to be creative, innovative and solve real problems. I have 3+ years of experience in software engineering. I love getting things better.</p>
+          </div>
+          <div className="col-half">
+            <img src={ WelcomeImage } alt="welcome image"/>
+          </div>
         </section>
         <section id="project-section">
           <header className="project-title">
