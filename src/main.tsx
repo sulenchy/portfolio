@@ -1,6 +1,6 @@
 // message.ts
 import * as React from 'react';
-import WelcomeImage from './public/images/welcomeImage.jpeg';
+import WelcomeImage from './public/images/WelcomeImage.jpeg';
 
 export default class main extends React.Component {
   copyright: Date = new Date();
