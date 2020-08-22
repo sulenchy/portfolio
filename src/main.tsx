@@ -25,17 +25,18 @@ export default class main extends React.Component {
           </nav>
         </header>
         <section id="welcome-section">
-          <div className="col-half">
+          <div className="col-half skew-y-20">
             <h1>Hey I'm Sulenchy</h1>
             <p className="text-green"><span className="profession"></span> I am a meticulous software engineer who loves using technology to be creative, innovative and solve real problems. I have 3+ years of experience in software engineering. I love getting things better.</p>
+            <p style={{ color: 'green', borderBottom: '2px solid' } }>My stack is PERN(Postgres Express React and Node). I can write Javescript, Typescript and C#.</p>
           </div>
-          <div className="col-half">
+          <div className="col-half rotate">
             <img src={ WelcomeImage } alt="welcome image"/>
           </div>
         </section>
         <section id="project-section">
           <header className="project-title">
-              <h3>These are some of my projects..</h3>
+              <h3>These are some of my recent projects..</h3>
           </header>
           
           <article className="projects">
@@ -44,7 +45,7 @@ export default class main extends React.Component {
                     <img src="#" alt="#" />
                 </a>
                 <footer>
-                    <p>Name of the project</p>
+                    <p>Web scrapper</p>
                 </footer>                
             </div>
             <div className="card">
@@ -52,7 +53,7 @@ export default class main extends React.Component {
                     <img src="#" alt="#" />
                 </a>
                 <footer>
-                    <p>Name of the project</p>
+                    <p>Edugate(Backend)</p>
                 </footer>
             </div>
             <div className="card">
@@ -60,7 +61,7 @@ export default class main extends React.Component {
                     <img src="#" alt="#" />
                 </a>
                 <footer>
-                    <p>Name of the project</p>
+                    <p>Edugate(Frontend)</p>
                 </footer>
             </div>
             <div className="card">

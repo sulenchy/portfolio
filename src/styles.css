@@ -1,6 +1,6 @@
 body{
-    font-size:5vw;
-    font-family: 'Open Sans' sans-serif;
+    font-size:16px;
+    font-family: 'Dancing Script', cursive;
     padding:0;
     margin:0;
 }
@@ -21,6 +21,26 @@ header #header, nav, ul {
     flex-direction: column;
     justify-content: center;
 }
+
+.skew-y-20 {
+    cursor: pointer;
+    transform: skewY(20deg);
+}
+
+.skew-y-20:hover {
+    transform: skewY(0deg);
+    transition: 2s;
+}
+
+.rotate {
+    animation-name: rotate;
+    animation-duration: 5s;
+}
+
+@keyframes rotate {
+    from {transform: rotate(360deg);}
+    to {transform: rotate(0deg);}
+  }
 
 nav ul {
     text-align: center;
