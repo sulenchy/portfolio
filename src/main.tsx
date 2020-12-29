@@ -2,26 +2,27 @@ import React, { useState } from 'react';
 import WelcomeImage from './public/images/WelcomeImage.jpeg';
 
 export default function main() {
-  const [ copyright, setCopyright ] = useState<Date>(new Date())
+  const [ copyright, setCopyright ] = useState<Date>(new Date());
 
   return (
     <div>
-      <header id="header">
-        <nav id="navbar">
-            <ul>
-                <li>
-                    <a href="#welcome-section">About</a>
-                </li>
-                <li>
-                    <a href="#project-section">Work</a>
-                </li>
-                <li>
-                    <a href="#social-media">Contact</a>
-                </li>
-            </ul>
-        </nav>
+      <header id="main-header" className="fixed bg-blue-400 shadow-lg  z-50 w-full">
+        <nav id="navbar" className="px-5 py-2 flex justify-between items-center">
+          <a className="text-2xl text-white">My App</a>
+              <ul className="flex">
+                  <li>
+                      <a className="text-white hover:bg-gray-700 px-3 rounded py-1" href="#welcome-section">About</a>
+                  </li>
+                  <li>
+                      <a className="text-white hover:bg-gray-700 px-3 rounded py-1" href="#project-section">Work</a>
+                  </li>
+                  <li>
+                      <a className="text-white hover:bg-gray-700 px-3 rounded py-1" href="#social-media">Contact</a>
+                  </li>
+              </ul>
+          </nav>
       </header>
-      <section id="welcome-section">
+      <section id="welcome-section" className="h-screen flex items-center">
         <div className="col-half skew-y-20">
           <h1>Hey I'm Sulenchy</h1>
           <p className="text-green"><span className="profession"></span> I am a meticulous software engineer who loves using technology to be creative, innovative and solve real problems. I have 3+ years of experience in software engineering. I love getting things better.</p>
@@ -31,32 +32,7 @@ export default function main() {
           <img src={ WelcomeImage } alt="welcome image"/>
         </div>
       </section>
-      <section>
-        <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-          <div className="flex-shrink-0">
-            <img className="h-12 w-12" src={ WelcomeImage } alt="ChitChat Logo" />
-          </div>
-          <div>
-            <div className="text-xl font-medium text-black">ChitChat</div>
-            <p className="text-gray-500">You have a new message!</p>
-          </div>
-        </div>
-        <div className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-<img className="block mx-auto h-24 rounded-full sm:mx-0 sm:flex-shrink-0" src={ WelcomeImage } alt="Woman's Face" />
-<div className="text-center space-y-2 sm:text-left">
-  <div className="space-y-0.5">
-    <p className="text-lg text-black font-semibold">
-      Erin Lindford
-    </p>
-    <p className="text-gray-500 font-medium">
-      Product Engineer
-    </p>
-  </div>
-  <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Message</button>
-</div>
-</div>
-      </section>
-      <section id="project-section">
+      <section id="project-section" className="h-screen flex">
         <header className="project-title">
             <h3>These are some of my recent projects..</h3>
         </header>
@@ -99,7 +75,7 @@ export default function main() {
           </div>
         </article>
       </section>
-      <section id="social-media">
+      <section id="social-media" className="h-screen flex">
         <h1>Let's work together...</h1>
         <p>How do you take your coffee?</p>
         <div id="social-link">
@@ -109,7 +85,7 @@ export default function main() {
             <a href="https://www.linkedin.com/in/abudu-abiodun-751b12b0/" target="_blank">LinkedIn</a>
         </div>
       </section>
-      <footer id="footer">
+      <footer id="footer" className="bg-blue-400 shadow-lg  z-50 w-full text-white text-center">
           <p>Copyright &copy; { copyright.getFullYear() }</p>
       </footer>
     </div>
