@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from './header';
 import WelcomeImage from './public/images/WelcomeImage.jpeg';
 // Todo 1: take an array of recent works and loop through them in 
 
@@ -7,22 +8,7 @@ export default function main() {
 
   return (
     <div>
-      <header id="main-header" className="fixed bg-blue-400 shadow-lg  z-50 w-full">
-        <nav id="navbar" className="px-5 py-2 flex justify-between items-center">
-          <a className="text-2xl text-white">My App</a>
-              <ul className="flex">
-                  <li>
-                      <a className="text-white hover:bg-gray-700 px-3 rounded py-1" href="#welcome-section">About</a>
-                  </li>
-                  <li>
-                      <a className="text-white hover:bg-gray-700 px-3 rounded py-1" href="#project-section">Work</a>
-                  </li>
-                  <li>
-                      <a className="text-white hover:bg-gray-700 px-3 rounded py-1" href="#social-media">Contact</a>
-                  </li>
-              </ul>
-          </nav>
-      </header>
+      <Header />
 
       <section id="welcome-section" className="lg:h-screen flex items-center lg:flex-row flex-col pt-20">
         <main className="lg:w-1/2 mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 align-center">
