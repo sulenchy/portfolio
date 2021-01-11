@@ -4,7 +4,7 @@ import { truncateText, projectList } from './utils';
 
 export default function projects() {
     return (
-        <section id="project-section" className="lg:h-screen flex items-center flex-col pt-20">
+        <section id="Projects" className="lg:h-screen flex items-center flex-col pt-20">
           <h3 className="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
             <span className="block xl:inline">Recent Works</span>
           </h3>

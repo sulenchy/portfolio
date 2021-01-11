@@ -10,7 +10,7 @@ export default function main() {
   return (
     <div>
       <Header />
-      <section id="welcome-section" className="lg:h-screen flex items-center lg:flex-row flex-col pt-20">
+      <section id="About" className="lg:h-screen flex items-center lg:flex-row flex-col pt-20">
         <main className="lg:w-1/2 mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 align-center">
           <div className="text-center">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
@@ -48,7 +48,7 @@ export default function main() {
         </div>
       </section>
       <Projects />
-      <section id="social-media" className="lg:h-screen flex items-center flex-col pt-40">
+      <section id="Contact" className="lg:h-screen flex items-center flex-col pt-40">
         <h1 className="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">Let's work together...</h1>
         <p>How do you take your coffee?</p>
         <div className="flex flex-wrap pt-10" id="social-link">
