@@ -1,26 +1,6 @@
 import React from 'react';
 import defaultImage from './public/images/WelcomeImage.jpeg';
-
-const projectList : { title: string, description: string, technologies: string, image: string }[] = [
-    {
-        title: "Vertical Search Engine For School Research",
-        description: "A vertical search engine for students who want ...",
-        technologies: "Nodejs, expressJs, cheerio, requestJs and minisearch",
-        image: ""
-    },
-    {
-        title: "Vertical Search Engine For School Research",
-        description: "A vertical search engine for students who want ...",
-        technologies: "Nodejs, expressJs, cheerio, requestJs and minisearch",
-        image: ""
-    },
-    {
-        title: "Vertical Search Engine For School Research",
-        description: "A vertical search engine for students who want ...",
-        technologies: "Nodejs, expressJs, cheerio, requestJs and minisearch",
-        image: ""
-    },
-];
+import { truncateText, projectList } from './utils';
 
 export default function projects() {
     return (
@@ -31,13 +11,13 @@ export default function projects() {
           <main className="container mx-auto px-4 pt-4 flex w-full flex-wrap justify-between">
             {
                 projectList.map(project => 
-                    <figure className="md:flex bg-gray-100 rounded-xl md:p-0 lg:w-5/12 shadow-lg m-10">
-                        <img className="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src={ defaultImage } alt="" width="384" height="512" />
+                    <figure className="md:flex bg-gray-100 rounded-xl md:p-0 lg:w-5/12 shadow-lg m-10 cursor-pointer" onClick={ () => {} } key={ project.id }>
+                        <img className="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src={ project.image || defaultImage } alt="" width="384" height="512" />
                         <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
                         <h1 id="project-title" className="font-semibold text-xl">{ project.title }</h1>
                         <blockquote>
                             <p id="project-desc" className="text-gray-500">
-                                { project.description }
+                                { truncateText( { len: 100, text: project.description }) }
                             </p>
                         </blockquote>
                         <figcaption className="font-medium">
@@ -45,7 +25,7 @@ export default function projects() {
                             Technologies
                             </div>
                             <div id="project-technologies" className="text-gray-500">
-                                { project.technologies }
+                                { truncateText({ len: 50, text: project.technologies }) }
                             </div>
                         </figcaption>
                         </div>
