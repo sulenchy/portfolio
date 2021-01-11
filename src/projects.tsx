@@ -11,7 +11,7 @@ export default function projects() {
           <main className="container mx-auto px-4 pt-4 flex w-full flex-wrap justify-between">
             {
                 projectList.map(project => 
-                    <figure className="md:flex bg-gray-100 rounded-xl md:p-0 lg:w-5/12 shadow-lg m-10 cursor-pointer" onClick={ () => {} } key={ project.id }>
+                    <figure className="md:flex bg-gray-100 rounded-xl md:p-0 lg:w-5/12 shadow-lg m-10 mb-2 cursor-pointer h-72" onClick={ () => {} } key={ project.id }>
                         <img className="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src={ project.image || defaultImage } alt="" width="384" height="512" />
                         <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
                         <h1 id="project-title" className="font-semibold text-xl">{ project.title }</h1>
