@@ -1,5 +1,5 @@
 import React from 'react';
-import defaultImage from './public/images/WelcomeImage.jpeg';
+import defaultImage from 'url:./public/images/WelcomeImage.jpeg';
 import { truncateText, projectList } from './utils';
 
 export default function projects() {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './header';
 import Projects from './projects';
-import WelcomeImage from './public/images/WelcomeImage.jpeg';
+import WelcomeImage from 'url:./public/images/WelcomeImage.jpeg';
 // Todo 1: take an array of recent works and loop through them in 
 
 export default function main() {
@@ -14,7 +14,7 @@ export default function main() {
         <main className="lg:w-1/2 mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 align-center">
           <div className="text-center">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-              <span className="block xl:inline">Hey, I'm Sulenchy... </span>
+              <span className="block xl:inline">Hey, I'm Abi</span>
             </h1>
             <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl">
             I am a meticulous software engineer who loves using technology to be creative, innovative and solve real problems. I have 3+ years of experience in software engineering. I am passionate about building from scratch and getting things better.
