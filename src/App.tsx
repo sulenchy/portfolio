@@ -1,9 +1,11 @@
 import React from 'react';
-import { BeakerIcon, ShieldCheckIcon } from '@heroicons/react/solid'
+import { ShieldCheckIcon, BriefcaseIcon, DocumentReportIcon, ExternalLinkIcon } from '@heroicons/react/solid'
 import avatar from  './avatar.jpg';
 import './App.css';
+import { skills } from './data';
 
 function App() {
+  console.log(skills)
   return (
     <div className="App">
       <header className="w-full md:h-20 items-center md:flex bg-blue-400 text-white text-2xl fixed z-50">
@@ -17,7 +19,7 @@ function App() {
               <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#skills">Skills</a></li>
               <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#experiences">Experiences</a></li>
               <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#projects">Projects</a></li>
-              <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contact</a></li>
+              <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contacts</a></li>
             </ul>
           </nav>
         </div>
@@ -45,33 +47,70 @@ function App() {
             <ul className="list-square text-2xl font-light leading-10">
               <li className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Programming with Javascript, Typescript and C#</li>
               <li className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Web development using ReactJS and Redux</li>
-              <li className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Restful microservices development using NodeJS</li>
+              <li className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Restful microservices development using NodeJS and express</li>
               <li className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Web scrapping using scrapping packages such as pupetteer</li>
               <li className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Mobile development using Java and React-Native</li>
               <li className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Containerization with Docker</li>
             </ul>
           </nav>
         </section>
-        <section id="experiences" className="w-full h-screen">
-          <header>
-            <BeakerIcon className="h-5 w-5 text-blue-500" />
-            <span>Experiences</span>
+        <section id="experiences" className="w-full h-screen pt-20 flex flex-col justify-center items-center">
+          <header className="flex justify-center items-center">
+            <BriefcaseIcon className="h-10 w-10 text-blue-500" />
+            <span className="pl-5 text-3xl text-opacity-95">Experiences</span>
           </header>
-          <div>
-            
+          <div className="md:flex">
+              <div className="mb-5 md:p-10 md:w-1/2">
+                <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+                  <div className="flex-shrink-0">
+                    <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" />
+                  </div>
+                  <div>
+                    <div className="text-xl font-medium text-black">Name of the company</div>
+                    <div>
+                      <span>Accomplishment</span>
+                      <p className="text-gray-500">You have a new message!</p>
+                      <span>start date - end date</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </section>
-        <section id="projects" className="w-full h-screen">
-          <header>
-            <img src="" alt=""/>
-            <span>Projects</span>
+        <section id="projects" className="w-full h-screen pt-20 flex flex-col justify-center items-center">
+          <header className="flex justify-center items-center">
+            <DocumentReportIcon className="h-10 w-10 text-blue-500" />
+            <span className="pl-5 text-3xl text-opacity-95">Projects</span>
           </header>
+          <div className="md:flex">
+              <div className="mb-5 md:p-10 md:w-1/2">
+                <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+                  <div className="flex-shrink-0">
+                    <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" />
+                  </div>
+                  <div>
+                    <div className="text-xl font-medium text-black">Project name</div>
+                    <p className="text-gray-500">Description of the project</p>
+                    <span>Tools</span>
+                    <span>Github Link: ...(Private/Public)</span>
+                  </div>
+                </div>
+              </div>
+          </div>
         </section>
-        <section id="contacts" className="w-full h-screen">
-          <header>
-            <img src="" alt=""/>
-            <span>Contacts</span>
+        <section id="contacts" className="w-full h-screen pt-20 flex flex-col justify-center items-center">
+          <header className="flex justify-center items-center">
+            <ExternalLinkIcon className="h-10 w-10 text-blue-500" />
+            <span className="pl-5 text-3xl text-opacity-95">Contacts</span>
           </header>
+          <nav className="md:flex">
+            <ul className="list-none text-left  md:flex justify-end">
+              <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.facebook.com/sulenchy" target="_blank" rel="noreferrer">Facebook</a></li>
+              <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.github.com/sulenchy" target="_blank" rel="noreferrer">Github</a></li>
+              <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.twitter.com/ababsul" target="_blank" rel="noreferrer">Twitter</a></li>
+              <li className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.linkedin.com/in/abudu-abiodun-751b12b0/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            </ul>
+          </nav>
         </section>
       </article>
       <footer>
