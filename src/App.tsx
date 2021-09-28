@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { ShieldCheckIcon, BriefcaseIcon, DocumentReportIcon, ExternalLinkIcon, HeartIcon, MenuIcon } from '@heroicons/react/solid'
+import React, { useEffect, useRef } from 'react';
+import { ShieldCheckIcon, BriefcaseIcon, DocumentReportIcon, ExternalLinkIcon, HeartIcon, MenuIcon, LightBulbIcon } from '@heroicons/react/solid'
 import avatar from  './avatar.jpg';
 import { IExpr, IProject, ISkill, getSkillArr, getProjectArr, getExprArr, skills } from './data';
 
@@ -8,6 +8,12 @@ function App() {
   const experienceArr : Array<IExpr> = getExprArr();
   const projectArr :  Array<IProject> = getProjectArr();
   const skillArr :  Array<ISkill> = getSkillArr();
+  type customHtmlElement = HTMLElement| null;
+
+  /** TODO: store the dark mode data in the local storage */
+  useEffect(() => {
+    getParent();
+  })
 
   const toggleNav = (): void => {
     const classList: DOMTokenList | undefined = headerRef.current?.classList;
@@ -15,10 +21,32 @@ function App() {
       headerRef.current?.classList.remove('hidden') :
       headerRef.current?.classList.add('hidden');
   }
+
+  const getParent = () : void => {
+    const bulb: customHtmlElement = document.getElementById("bulb");
+    const bulbWrapper : customHtmlElement = document.getElementById("bulb-wrapper");
+    if (document.documentElement.classList?.value.split(' ').includes('dark')) {
+      document.documentElement.classList.remove('dark');
+      bulb?.classList.remove("text-black");
+      bulb?.classList.add("text-white");
+      bulbWrapper?.classList.remove("bg-white", "justify-start")
+      bulbWrapper?.classList.add("bg-blue-500", "justify-end")
+    }
+    else {
+      document.documentElement.classList.add('dark');
+      bulb?.classList.remove("text-white");
+      bulb?.classList.add("text-black");
+      bulbWrapper?.classList.remove("bg-blue-500", "justify-end");
+      bulbWrapper?.classList.add("bg-white", "justify-start");
+    }
+  }
   
   return (
-    <div className="App">
+    <div className="dark:bg-black dark:text-white">
       <header className="w-full md:h-20 items-center md:flex bg-blue-400 text-white text-2xl fixed z-50">
+        <div id="bulb-wrapper" className="rounded-3xl w-20 border-2 ml-10 flex justify-end text-right">
+          <LightBulbIcon id="bulb" className="w-5 cursor-pointer" onClick={ getParent } />
+        </div>
         <div className="w-full md:w-1/3 flex  justify-between">
           <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out"><a href="#about-me">abi.dev</a></span><MenuIcon className="md:hidden w-5 ml-10" onClick={ toggleNav } />
         </div>
@@ -151,7 +179,7 @@ function App() {
           </nav>
         </section>
       </article>
-      <footer>
+      <footer  className="text-center">
         <span>Design with <HeartIcon className="inline w-5" /> by me with ReactJs, TailwindCss and little bit of Typescript</span>
       </footer>
     </div>
