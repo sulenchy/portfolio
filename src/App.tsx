@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { ShieldCheckIcon, BriefcaseIcon, DocumentReportIcon, ExternalLinkIcon, HeartIcon, MenuIcon } from '@heroicons/react/solid'
 import avatar from  './avatar.jpg';
-import './App.css';
 import { IExpr, IProject, ISkill, getSkillArr, getProjectArr, getExprArr, skills } from './data';
 
 function App() {
