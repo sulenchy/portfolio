@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { ShieldCheckIcon, BriefcaseIcon, DocumentReportIcon, ExternalLinkIcon, HeartIcon, MenuIcon } from '@heroicons/react/solid'
 import avatar from  './avatar.jpg';
 import './App.css';
