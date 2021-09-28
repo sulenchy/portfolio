@@ -1,3 +1,4 @@
+
 type githubType = "Public" | "Private"
 
 interface IGithub {
@@ -9,7 +10,7 @@ interface ILink {
     deployed: string
 }
 
-interface IProject {
+export interface IProject {
     id: string,
     name: string,
     description: string,
@@ -23,7 +24,7 @@ interface IProjectSet {
     [key: string]: IProject
 }
 
-interface ISkill {
+export interface ISkill {
     id: string,
     description: string,
     name: string,
@@ -38,19 +39,23 @@ interface ICompanyLinks {
     [key: string]: string
 }
 
-interface IExpr {
+export interface IExpr {
     id: string,
     companyName: string,
     skillsDemonstrated: string[],
     achievement: string,
     startDate: string,
     endDate: string,
-    links: ICompanyLinks
+    links: ICompanyLinks,
+    location: string,
+    role: string,
 }
 
 interface IExprSet {
     [key: string]: IExpr
 }
+
+
 
 export const experiences: IExprSet = {
     "1": {
@@ -62,7 +67,9 @@ export const experiences: IExprSet = {
         endDate: "",
         links: {
             "companyUrl": "www.andela.com"
-        }
+        },
+        location: "Lagos, Nigeria",
+        role: "Frontend Engineer"
     },
     "2": {
         id: "2",
@@ -73,7 +80,9 @@ export const experiences: IExprSet = {
         endDate: "Aug, 2021",
         links: {
             "companyUrl": "www.app.snaps.io"
-        }
+        },
+        location: "New York, United State",
+        role: "Fullstack Software Engineer"
     },
 }
 
@@ -122,15 +131,21 @@ export const skills: ISkillSet = {
     },
     "8": {
         id: "8",
-        description: "Mobile App development with Java and React-Native",
-        name: "Mobile App Development",
-        yearsOfExperience: 2
+        description: "Mobile App development with Java",
+        name: "Java",
+        yearsOfExperience: 1
     },
     "9": {
         id: "9",
+        description: "Mobile App development with React Native",
+        name: "React Native",
+        yearsOfExperience: 1
+    },
+    "10": {
+        id: "10",
         description: "Web development using HTML and CSS",
         name: "HTML and CSS",
-        yearsOfExperience: 2
+        yearsOfExperience: 5
     },
 }
 
@@ -168,7 +183,7 @@ export const projects : IProjectSet = {
     "3": {
         id: "3",
         name: "Edugate",
-        description: "It isa web app that lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering 'neither' or 'both' is against the rules.",
+        description: "It is a web app that lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering 'neither' or 'both' is against the rules.",
         skillDemonstrated: [],
         languages: ["Javascript", "Redux", "Javascript"],
         isDeployed: false,
@@ -196,3 +211,28 @@ export const projects : IProjectSet = {
         }
     },
 }
+
+export function getExprArr(): Array<IExpr>   {
+    const objArr: Array<IExpr> = [];
+    Object.keys(experiences).forEach((element: string) => {
+        return objArr.push(experiences[element]);
+    });;
+    return objArr;
+};
+
+export function getSkillArr(): Array<ISkill>   {
+    const objArr: Array<ISkill> = [];   
+    Object.keys(skills).forEach((element: string) => {
+        return objArr.push(skills[element]);
+    });;
+    return objArr;
+};
+
+export function getProjectArr(): Array<IProject>   {
+    const objArr: Array<IProject> = [];
+    Object.keys(projects).forEach((element: string) => {
+        return objArr.push(projects[element]);
+    });;
+    return objArr;
+};
+
