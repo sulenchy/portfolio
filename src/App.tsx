@@ -1,7 +1,22 @@
-import React, { useEffect, useRef } from 'react';
-import { ShieldCheckIcon, BriefcaseIcon, DocumentReportIcon, ExternalLinkIcon, HeartIcon, MenuIcon, LightBulbIcon } from '@heroicons/react/solid'
+import React, { useRef, useEffect } from 'react';
+import {
+  ShieldCheckIcon,
+  BriefcaseIcon,
+  DocumentReportIcon,
+  ExternalLinkIcon,
+  HeartIcon,
+  MenuIcon,
+  LightBulbIcon
+} from '@heroicons/react/solid'
 import avatar from  './avatar.jpg';
-import { IExpr, IProject, ISkill, getSkillArr, getProjectArr, getExprArr, skills } from './data';
+import { 
+  IExpr,
+  IProject,
+  ISkill,
+  getSkillArr,
+  getProjectArr,
+  getExprArr,
+  skills } from './data';
 
 function App() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -12,7 +27,7 @@ function App() {
 
   /** TODO: store the dark mode data in the local storage */
   useEffect(() => {
-    getParent();
+    toggleDarkMode();
   })
 
   const toggleNav = (): void => {
@@ -22,7 +37,7 @@ function App() {
       headerRef.current?.classList.add('hidden');
   }
 
-  const getParent = () : void => {
+  const toggleDarkMode = () : void => {
     const bulb: customHtmlElement = document.getElementById("bulb");
     const bulbWrapper : customHtmlElement = document.getElementById("bulb-wrapper");
     if (document.documentElement.classList?.value.split(' ').includes('dark')) {
@@ -42,10 +57,10 @@ function App() {
   }
   
   return (
-    <div className="dark:bg-black dark:text-white">
-      <header className="w-full md:h-20 items-center md:flex bg-blue-400 text-white text-2xl fixed z-50">
+    <div className="dark:bg-black dark:text-white text-center">
+      <header className="w-full md:h-20 items-center md:flex bg-blue-400 dark:bg-black border-b-2 border-white text-white text-2xl fixed z-50">
         <div id="bulb-wrapper" className="rounded-3xl w-20 border-2 ml-10 flex justify-end text-right">
-          <LightBulbIcon id="bulb" className="w-5 cursor-pointer" onClick={ getParent } />
+          <LightBulbIcon id="bulb" className="w-5 cursor-pointer" onClick={ toggleDarkMode } />
         </div>
         <div className="w-full md:w-1/3 flex  justify-between">
           <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out"><a href="#about-me">abi.dev</a></span><MenuIcon className="md:hidden w-5 ml-10" onClick={ toggleNav } />
@@ -78,7 +93,7 @@ function App() {
             <ul className="text-black flex flex-wrap items-center justify-center">
               {
               skillArr.map(({ name, yearsOfExperience }: ISkill) => (
-                <li key={name} className="h-50 rounded bg-gray-400 m-1 p-5">{name} { yearsOfExperience } yrs</li>
+                <li key={ name } id={ name } className="h-50 rounded bg-gray-400 m-1 p-5">{ name } { yearsOfExperience } yrs</li>
               ) )
             }
             </ul>
@@ -110,7 +125,7 @@ function App() {
           <div className="flex flex-col w-full p-10">
             {
                 experienceArr.map((expr: IExpr) => (
-                  <div key={ expr.companyName } className="mb-5 p-5 md:flex hover:shadow text-left">
+                  <div key={ expr.companyName } id={ expr.companyName } className="mb-5 p-5 md:flex hover:shadow text-left">
                     <div className="md:w-1/3">
                       <h3 className="text-blue-500 text-xl">{ expr.companyName }</h3>
                       <h4>{ expr.location }</h4>
@@ -145,16 +160,16 @@ function App() {
               <div className="mb-5 md:flex items-center justify-center flex-wrap md:w-full">
                 {
                     projectArr.map((project: IProject) => (
-                      <div key={ project.name } className="md:w-2/5 m-2 p-5 rounded transition delay-150 duration-300 ease-out text-left drop-shadow filter hover:shadow">
+                      <div key={ project.name } id={ project.name } className="md:w-2/5 m-2 p-5 rounded transition delay-150 duration-300 ease-out text-left drop-shadow filter hover:shadow">
                         <div>
-                          <span className="text-xl font-medium text-black">{project.name}</span>
+                          <span className="text-xl font-medium text-black dark:text-white">{project.name}</span>
                           <p className="text-gray-500 text-justify">{project.description}</p>
                           <div>
-                            <span className="font-medium text-black">Technologies</span>
-                            <ul className="my-2 text-gray-500">{ project.languages.map((lang: string) => (<li className="inline p-2 mr-2">{lang}</li>))}</ul>
+                            <span className="font-medium text-black dark:text-white">Technologies</span>
+                            <ul className="my-2 text-gray-500">{ project.languages.map((lang: string, index) => (<li key={ `${index}-${lang}` } className="inline p-2 mr-2">{lang}</li>))}</ul>
                           </div>
                           <div>
-                            <span className="font-medium text-black block">Github Link</span>
+                            <span className="font-medium text-black dark:text-white block">Github Link</span>
                             <a href={ project.links.github.link } target="_blank" rel="noreferrer" className="my-2 text-blue-500">{ `${ project.links.github.link } (${ project.links.github.githubType })`}</a>
                           </div>
                         </div>

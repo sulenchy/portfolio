@@ -153,9 +153,9 @@ export const projects : IProjectSet = {
     "1" : {
         id: "1",
         name: "Twitter Clone",
-        description: "",
+        description: "This is a clone of twitter app. It has some basic functionalities such as the Add new tweet, like tweet, load tweet(s) etc. It was built during my Udacity React Nanodegree.",
         skillDemonstrated: [],
-        languages: ["ReactJS", "Redux", "Javascript"],
+        languages: ["ReactJS", "Redux", "Javascript", "HTML", "CSS"],
         isDeployed: false,
         links: {
             github: {
@@ -182,10 +182,10 @@ export const projects : IProjectSet = {
     },
     "3": {
         id: "3",
-        name: "Edugate",
-        description: "It is a web app that lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering 'neither' or 'both' is against the rules.",
+        name: "Edugate(still in progress)",
+        description: "This project is titled Edugate. The idea behind this project centers around providing result management system to schools expecially high school around the globe.",
         skillDemonstrated: [],
-        languages: ["Javascript", "Redux", "Javascript"],
+        languages: ["Javascript", "Redux", "React", "styledComponent"],
         isDeployed: false,
         links: {
             github: {
@@ -200,14 +200,14 @@ export const projects : IProjectSet = {
         name: "Vertical Search Engine",
         description: "A vertical search engine for students who want to apply for postgraduate research studies and look for potential supervisors at a UK university(Imperial, lancaster and coventry university)",
         skillDemonstrated: [],
-        languages:["Javascript", "Redux", "Javascript"],
+        languages:["minisearch", "Nodejs", "expressjs", "cheerio", "Html", "Javascript"],
         isDeployed: false,
         links: {
             github: {
-                githubType: "Private",
+                githubType: "Public",
                 link: "https://github.com/sulenchy/Edugate"
             },
-            deployed: ""
+            deployed: "https://blooming-peak-97299.herokuapp.com/static/"
         }
     },
 }
