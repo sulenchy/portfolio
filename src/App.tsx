@@ -57,13 +57,16 @@ function App() {
   }
   
   return (
-    <div className="dark:bg-black dark:text-white text-center">
-      <header className="w-full md:h-20 items-center md:flex bg-blue-400 dark:bg-black border-b-2 border-white text-white text-2xl fixed z-50">
-        <div id="bulb-wrapper" className="rounded-3xl w-20 border-2 ml-10 flex justify-end text-right">
-          <LightBulbIcon id="bulb" className="w-5 cursor-pointer" onClick={ toggleDarkMode } />
+    <div className="dark:bg-black dark:text-white text-center sm:w-full">
+      <header className="w-full md:h-20 items-center md:flex bg-blue-400 dark:bg-black border-b-2 border-white text-white text-2xl fixed z-20">
+        <div id="bulb-wrapper" className="rounded-3xl w-20 border-2 ml-10 flex justify-end text-right cursor-pointer" onClick={ toggleDarkMode }>
+          <LightBulbIcon id="bulb" className="w-5" />
         </div>
         <div className="w-full md:w-1/3 flex  justify-between">
-          <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out"><a href="#about-me">abi.dev</a></span><MenuIcon className="md:hidden w-5 ml-10" onClick={ toggleNav } />
+          <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out">
+            <a href="#about-me">abi.dev</a>
+          </span>
+          <MenuIcon className="md:hidden w-5 ml-10" onClick={ toggleNav } />
         </div>
         <div className="w-full md:w-2/3 hidden md:block" ref={ headerRef }>
           <nav className="">
@@ -107,7 +110,7 @@ function App() {
             <span className="pl-5 text-3xl text-opacity-95">Skills</span>
           </header>
           <nav className="pl-10 md:w-2/3 flex-col mx-auto">
-            <ul className="list-square text-2xl font-light leading-10">
+            <ul className="list-square text-2xl font-light leading-10 flex flex-wrap">
               <li key="skill1" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Programming with Javascript, Typescript and C#</li>
               <li key="skill2" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Web development using ReactJS and Redux</li>
               <li key="skill3" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Restful microservices development using NodeJS and express</li>
@@ -166,7 +169,7 @@ function App() {
                           <p className="text-gray-500 text-justify">{project.description}</p>
                           <div>
                             <span className="font-medium text-black dark:text-white">Technologies</span>
-                            <ul className="my-2 text-gray-500">{ project.languages.map((lang: string, index) => (<li key={ `${index}-${lang}` } className="inline p-2 mr-2">{lang}</li>))}</ul>
+                            <ul className="my-2 text-gray-500 flex flex-wrap">{ project.languages.map((lang: string, index) => (<li key={ `${index}-${lang}` } className="inline p-2 mr-2">{lang}</li>))}</ul>
                           </div>
                           <div>
                             <span className="font-medium text-black dark:text-white block">Github Link</span>
