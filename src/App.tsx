@@ -80,7 +80,9 @@ function App() {
         </div>
       </header>
       <article className="filter drop-shadow">
-        <section id="about-me" className="w-full md:h-screen bg-about-image pt-20 md:bg-repeat-round mix-blend-multiply">
+        <section id="about-me" className="w-full md:h-screen bg-about-image pt-20 md:bg-repeat-round mix-blend-multiply" style={{
+          backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'
+        }}>
           <div className="w-60 h-60 absolute inset-24">
             <img className="rounded-full opacity-50" src={avatar} alt=""/>
             <span className="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-blue-900 opacity-75"></span>
