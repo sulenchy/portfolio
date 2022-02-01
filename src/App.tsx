@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from 'react';
+import FileSaver from 'file-saver';
+import Resume from './resume.pdf';
 import {
   ShieldCheckIcon,
   BriefcaseIcon,
@@ -29,6 +31,10 @@ function App() {
   useEffect(() => {
     toggleDarkMode();
   })
+
+  const downloadResume = () => {
+    FileSaver.saveAs(Resume, "resume.pdf");
+  }
 
   const toggleNav = (): void => {
     const classList: DOMTokenList | undefined = headerRef.current?.classList;
@@ -75,6 +81,7 @@ function App() {
               <li key="experiences" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#experiences">Experiences</a></li>
               <li key="projects" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#projects">Projects</a></li>
               <li key="contacts" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contacts</a></li>
+              <li key="contacts" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href={ Resume } download="abi-resume.pdf" title='download resume'>resume</a></li>
             </ul>
           </nav>
         </div>
@@ -200,7 +207,7 @@ function App() {
         </section>
       </article>
       <footer  className="text-center">
-        <span>Design with <HeartIcon className="inline w-5" /> by me with ReactJs, TailwindCss and little bit of Typescript</span>
+        <span>Design with <HeartIcon className="inline w-5" /> by abi with ReactJs, TailwindCss and little bit of Typescript</span>
       </footer>
     </div>
   );
