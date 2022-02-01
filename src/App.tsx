@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import FileSaver from 'file-saver';
 import Resume from './resume.pdf';
 import {
   ShieldCheckIcon,
@@ -31,10 +30,6 @@ function App() {
   useEffect(() => {
     toggleDarkMode();
   })
-
-  const downloadResume = () => {
-    FileSaver.saveAs(Resume, "resume.pdf");
-  }
 
   const toggleNav = (): void => {
     const classList: DOMTokenList | undefined = headerRef.current?.classList;
