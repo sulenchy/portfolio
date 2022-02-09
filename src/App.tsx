@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Resume from './resume.pdf';
 import {
   ShieldCheckIcon,
@@ -7,7 +7,7 @@ import {
   ExternalLinkIcon,
   HeartIcon,
   MenuIcon,
-  LightBulbIcon
+  MoonIcon
 } from '@heroicons/react/solid'
 import avatar from  './avatar.jpg';
 import { 
@@ -24,12 +24,8 @@ function App() {
   const experienceArr : Array<IExpr> = getExprArr();
   const projectArr :  Array<IProject> = getProjectArr();
   const skillArr :  Array<ISkill> = getSkillArr();
-  type customHtmlElement = HTMLElement| null;
 
-  /** TODO: store the dark mode data in the local storage */
-  useEffect(() => {
-    toggleDarkMode();
-  })
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleNav = (): void => {
     const classList: DOMTokenList | undefined = headerRef.current?.classList;
@@ -39,34 +35,22 @@ function App() {
   }
 
   const toggleDarkMode = () : void => {
-    const bulb: customHtmlElement = document.getElementById("bulb");
-    const bulbWrapper : customHtmlElement = document.getElementById("bulb-wrapper");
-    if (document.documentElement.classList?.value.split(' ').includes('dark')) {
-      document.documentElement.classList.remove('dark');
-      bulb?.classList.remove("text-black");
-      bulb?.classList.add("text-white");
-      bulbWrapper?.classList.remove("bg-white", "justify-start")
-      bulbWrapper?.classList.add("bg-blue-500", "justify-end")
-    }
-    else {
-      document.documentElement.classList.add('dark');
-      bulb?.classList.remove("text-white");
-      bulb?.classList.add("text-black");
-      bulbWrapper?.classList.remove("bg-blue-500", "justify-end");
-      bulbWrapper?.classList.add("bg-white", "justify-start");
-    }
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle('dark')
   }
   
   return (
     <div className="dark:bg-black dark:text-white text-center sm:w-full">
       <header className="w-full md:h-20 items-center md:flex bg-blue-400 dark:bg-black border-b-2 border-white text-white text-2xl fixed z-20">
-        <div id="bulb-wrapper" className="rounded-3xl w-20 border-2 ml-10 flex justify-end text-right cursor-pointer" onClick={ toggleDarkMode }>
-          <LightBulbIcon id="bulb" className="w-5" />
-        </div>
         <div className="w-full md:w-1/3 flex  justify-between">
-          <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out">
-            <a href="#about-me">abi.dev</a>
-          </span>
+          <div className="flex flex-row w-1/3 items-center">
+            <div id="bulb-wrapper" className='cursor-pointer bg-white' title="dark mode switch" onClick={ toggleDarkMode } style={{ borderRadius: '50%',height: '20px', width: '20px', marginLeft: '10px' }}>
+              <MoonIcon id="bulb" className={`w-5 ${darkMode ? 'text-blue-400' : 'text-black'}`} />
+            </div>
+            <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out">
+              <a href="#about-me">abi.dev</a>
+            </span>
+          </div>
           <MenuIcon className="md:hidden w-5 ml-10" onClick={ toggleNav } />
         </div>
         <div className="w-full md:w-2/3 hidden md:block" ref={ headerRef }>
@@ -76,7 +60,7 @@ function App() {
               <li key="experiences" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#experiences">Experiences</a></li>
               <li key="projects" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#projects">Projects</a></li>
               <li key="contacts" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contacts</a></li>
-              <li key="contacts" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href={ Resume } download="abi-resume.pdf" title='download resume'>resume</a></li>
+              <li key="resume" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href={ Resume } download="abi-resume.pdf" title='download resume'>resume</a></li>
             </ul>
           </nav>
         </div>
@@ -91,21 +75,20 @@ function App() {
           </div>
           <div className="text-white text-3xl flex flex-col justify-center items-center md:w-2/3 md:h-screen m-auto space-x-9 font-serif p-5 relative">
             <h2>Hello, I am Abi</h2>
-            <div className="text-2xl mt-10 font-light leading-10">
+            <div className="text-2xl mt-10 font-light leading-10" style={{ marginLeft: '0' }}>
               <p>I am a fullstack software engineer but I major in Frontend. I am interested in automation of systems.</p>
               <p>I program with Javascript, Typescript and c#(currently rusty). I am open to new opportunities especially ones that allow learning new skills set.</p>
             </div>
-
-          <div className="flex justify-start text-sm">
-            <ul className="text-black flex flex-wrap items-center justify-center">
-              {
-              skillArr.map(({ name, yearsOfExperience }: ISkill) => (
-                <li key={ name } id={ name } className="h-50 rounded bg-gray-400 m-1 p-5">{ name } { yearsOfExperience } yrs</li>
-              ) )
-            }
-            </ul>
-            
-          </div>
+            <div className="flex justify-start text-sm" style={{ marginLeft: '0' }}>
+              <ul className="text-black flex flex-wrap items-center justify-center">
+                {
+                skillArr.map(({ name, yearsOfExperience }: ISkill) => (
+                  <li key={ name } id={ name } className="h-50 rounded bg-gray-400 m-1 p-5">{ name } { yearsOfExperience } yrs</li>
+                ) )
+              }
+              </ul>
+              
+            </div>
           </div>
         </section>
         <section id="skills" className="w-full md:h-screen pt-20 flex flex-col justify-center items-center">
@@ -129,7 +112,7 @@ function App() {
             <BriefcaseIcon className="h-10 w-10 text-blue-500" />
             <span className="pl-5 text-3xl text-opacity-95">Experiences</span>
           </header>
-          <div className="flex flex-col w-full p-10">
+          <div className="flex flex-col w-full p-2">
             {
                 experienceArr.map((expr: IExpr) => (
                   <div key={ expr.companyName } id={ expr.companyName } className="mb-5 p-5 md:flex hover:shadow text-left">
