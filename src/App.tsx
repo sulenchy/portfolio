@@ -97,7 +97,7 @@ function App() {
             <span className="pl-5 text-3xl text-opacity-95">Skills</span>
           </header>
           <nav className="pl-10 md:w-2/3 flex-col mx-auto">
-            <ul className="list-square text-2xl font-light leading-10 flex flex-wrap">
+            <ul className="list-square text-2xl font-light leading-10 flex flex-wrap flex-col">
               <li key="skill1" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Programming with Javascript, Typescript and C#</li>
               <li key="skill2" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Web development using ReactJS and Redux</li>
               <li key="skill3" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Restful microservices development using NodeJS and express</li>
@@ -112,10 +112,10 @@ function App() {
             <BriefcaseIcon className="h-10 w-10 text-blue-500" />
             <span className="pl-5 text-3xl text-opacity-95">Experiences</span>
           </header>
-          <div className="flex flex-col w-full p-2">
+          <div className="flex flex-col w-full md:p-10 p-2">
             {
                 experienceArr.map((expr: IExpr) => (
-                  <div key={ expr.companyName } id={ expr.companyName } className="mb-5 p-5 md:flex hover:shadow text-left">
+                  <div key={ expr.companyName } id={ expr.companyName } className="mb-5 p-5 md:p-10 md:flex hover:shadow text-left">
                     <div className="md:w-1/3">
                       <h3 className="text-blue-500 text-xl">{ expr.companyName }</h3>
                       <h4>{ expr.location }</h4>
