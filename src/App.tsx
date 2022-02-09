@@ -76,7 +76,7 @@ function App() {
           <div className="text-white text-3xl flex flex-col justify-center items-center md:w-2/3 md:h-screen m-auto space-x-9 font-serif p-5 relative">
             <h2>Hello, I am Abi</h2>
             <div className="text-2xl mt-10 font-light leading-10" style={{ marginLeft: '0' }}>
-              <p>I am a fullstack software engineer but I major in Frontend. I am interested in automation of systems.</p>
+              <p>I am a fullstack software engineer. I am interested in automation of systems.</p>
               <p>I program with Javascript, Typescript and c#(currently rusty). I am open to new opportunities especially ones that allow learning new skills set.</p>
             </div>
             <div className="flex justify-start text-sm" style={{ marginLeft: '0' }}>
