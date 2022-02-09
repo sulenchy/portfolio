@@ -27,11 +27,6 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    // darkMode ? document.documentElement.classList.add('dark')
-    //   : document.documentElement.classList.remove('dark');
-  }, [darkMode])
-
   const toggleNav = (): void => {
     const classList: DOMTokenList | undefined = headerRef.current?.classList;
     classList?.value.split(' ').includes('hidden') ?
