@@ -82,8 +82,8 @@ function App() {
             <div className="flex justify-start text-sm" style={{ marginLeft: '0' }}>
               <ul className="text-black flex flex-wrap items-center justify-center">
                 {
-                skillArr.map(({ name, yearsOfExperience }: ISkill) => (
-                  <li key={ name } id={ name } className="h-50 rounded bg-gray-400 m-1 p-5">{ name } { yearsOfExperience } yrs</li>
+                skillArr.map(({ name, yearsOfExperience }: ISkill, index) => (
+                  <li key={ `${name}-${index}` } id={ name } className="h-50 rounded bg-gray-400 m-1 p-5">{ name } { yearsOfExperience } yrs</li>
                 ) )
               }
               </ul>
@@ -114,8 +114,8 @@ function App() {
           </header>
           <div className="flex flex-col w-full md:p-10 p-2">
             {
-                experienceArr.map((expr: IExpr) => (
-                  <div key={ expr.companyName } id={ expr.companyName } className="mb-5 p-5 md:p-10 md:flex hover:shadow text-left">
+                experienceArr.map((expr: IExpr, index) => (
+                  <div key={ `${expr.companyName}-${index}` } id={ expr.companyName } className="mb-5 p-5 md:p-10 md:flex hover:shadow text-left">
                     <div className="md:w-1/3">
                       <h3 className="text-blue-500 text-xl">{ expr.companyName }</h3>
                       <h4>{ expr.location }</h4>
@@ -133,7 +133,7 @@ function App() {
                       </div>
                       <div className="mb-5">
                         <span>Skills, Tools and specializations</span>
-                        <p className="text-gray-400">{expr.skillsDemonstrated.map((skill: string) => (<span>{skills[skill].name}, </span>))}</p>
+                        <p className="text-gray-400">{expr.skillsDemonstrated.map((skill: string, index) => (<span key={`${skill}-${index}`}>{skills[skill].name}, </span>))}</p>
                       </div>
                     </div>
                   </div>
@@ -156,7 +156,7 @@ function App() {
                           <p className="text-gray-500 text-justify">{project.description}</p>
                           <div>
                             <span className="font-medium text-black dark:text-white">Technologies</span>
-                            <ul className="my-2 text-gray-500 flex flex-wrap">{ project.languages.map((lang: string, index) => (<li key={ `${index}-${lang}` } className="inline p-2 mr-2">{lang}</li>))}</ul>
+                            <ul className="my-2 text-gray-500 flex flex-wrap">{ project.languages.map((lang: string, index) => (<li key={ `${index}-${lang}-${project.name}` } className="inline p-2 mr-2">{lang}</li>))}</ul>
                           </div>
                           <div>
                             <span className="font-medium text-black dark:text-white block">Github Link</span>
