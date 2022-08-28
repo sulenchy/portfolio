@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { Layout, Experience, Skills, Projects, Intro, Contacts } from '../components';
+import { Layout, Experience, Skills, Projects, Intro, Contacts } from './components';
 
 import 'normalize.css/normalize.css';
 import './style.scss';
