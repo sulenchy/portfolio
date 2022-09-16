@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import Image from 'next/image'
 import styles from './Intro.module.scss'
-import photo from '../../public/images/photo-2.jpeg';
+import photo from '../../public/images/Abiodun_Abudu.jpg';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -12,7 +12,7 @@ function Intro() {
   if (!data) return <div>Loading...</div>
   
   return (
-    <div className={styles.introWrapper}>
+    <div id="home" className={styles.introWrapper}>
       <div className={styles.textPart}>
         <p>Hello, I am Abi</p>
         <p>I am a fullstack software engineer. I am interested in automation of systems.
@@ -31,7 +31,7 @@ I program with Javascript, Typescript and c#(currently rusty). I am open to new 
           alt="Picture of abi"
           width={500}
           height={500}
-          style={{ borderRadius: '10px' }}
+          style={{ borderRadius: '50%' }}
         />
       </div>
     </div>

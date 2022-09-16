@@ -1,7 +1,8 @@
 .skillsWrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    justify-content: center;
+    padding-top: 70px;
 
     .header {
         display: flex;
@@ -15,13 +16,17 @@
 
     .shieldCheckIcon {
         height: 27px;
+        color: #3399ff;
+        margin-right: 20px;
     }
 
     .listWrapper {
+        align-items: center;
+        background: linear-gradient(90deg, #3399ff, transparent);
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         list-style-type: square;
+        padding-top: 10px;
     }
 
     .list {

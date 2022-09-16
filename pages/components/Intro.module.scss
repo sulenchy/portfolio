@@ -2,17 +2,19 @@
     display: flex;
     flex-direction: column;
     font-size: 1.3rem;
-    height: 100vh;
+    padding-top: 70px;
     text-align: center;
     .textPart {
         align-items: center;
         display: flex;
         flex-direction: column;
         margin: 10px;
+        padding: 0 20px;
         text-align: justify;
     }
 
     .imagePart {
+        border-radius: 50%;
         display: none
     }
 
@@ -28,6 +30,7 @@
         box-shadow: 0px 0px 3px 2px #5fa5f9;
         margin: 5px;
         padding: 5px;
+        text-align: center;
         width: 150px;
     }
 }
@@ -36,6 +39,7 @@
     .introWrapper{
         flex-direction: row;
         min-height: 100vh;
+        padding: 0;
         .textPart {
             display: flex;
             flex-direction: column;
@@ -45,6 +49,7 @@
 
         .imagePart {
             align-items: center;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             width: 50%;

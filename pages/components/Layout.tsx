@@ -50,7 +50,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
           </div>
           <div style={{ paddingLeft: '10px' }}>
             <span>
-              <Link href="/">
+              <Link href="/#home">
                 <a>abi.dev</a>
               </Link>
             </span>
@@ -59,13 +59,13 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
         <div className={styles.navBody}>
           <ul id="link-main-wrapper" className={styles.linkMainWrapper}>
             <li className={styles.link}>
-              <Link href="/#experience">
-                <a>Experience</a>
+              <Link href="/#skills">
+                <a>Skills</a>
               </Link>
             </li>
             <li className={styles.link}>
-              <Link href="/#skills">
-                <a>Skills</a>
+              <Link href="/#experience">
+                <a>Experience</a>
               </Link>
             </li>
             <li className={styles.link}>
