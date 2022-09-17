@@ -21,7 +21,7 @@
     }
 
     .listWrapper {
-        align-items: center;
+        align-items: flex-start;
         background: linear-gradient(90deg, #3399ff, transparent);
         display: flex;
         flex-direction: column;
@@ -35,10 +35,9 @@
 }
 
 @media (min-width: 600px) {
-    .listWrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        list-style-type: square;
+    .skillsWrapper {
+        .listWrapper {
+            align-items: center;
+        }
     }
 }
