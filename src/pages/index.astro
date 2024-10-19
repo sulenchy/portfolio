@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Projects from '../data/projects';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<div id="about" class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+			<h1 class="text-4xl font-bold text-center mb-4">Welcome to My Portfolio</h1>
+			<p class="text-lg text-center">Hi, I’m [Your Name], a Frontend Developer specialized in [Skills].</p>
+		</div>
+		<div id="projects" class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+			<h1 class="text-4xl font-bold text-center mb-4">Projects</h1>
+			{
+				Projects.map(project => {
+					console.log("===> ",{project})
+					const {title, description, technologies, liveLink, githubLink} = project;
+					return <ProjectCard title={title} description={description} technologies={technologies} liveLink={liveLink} githubLink={githubLink} />
+				})
+			}
+
+		</div>
+	</main>
+</Layout>
+		
