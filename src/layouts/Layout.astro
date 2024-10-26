@@ -1,12 +1,10 @@
 ---
 import '../styles/global.css';
-
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
-
 
 ---
 
@@ -16,23 +14,23 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Thinking about this yet" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.icon" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="min-h-screen flex items-center justify-center bg-gray-50">
-		<header>
-			<div id="logo">Logo</div>
-			<nav>
-				<ul>
-					<li><a href="#about">About</a></li>
-					<li><a href="#projects"></a></li>
-					<li><a href="#contact"></a></li>
+	<body class="min-h-screen flex flex-col justify-center bg-gray-50">
+		<header class="w-full bg-white shadow-lg mb-5 flex h-20 items-center px-52 sticky top-0 z-10 mb-10">
+			<div id="logo" class="mx-5 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300">Logo</div>
+			<nav class="w-full">
+				<ul class="w-full flex justify-end">
+					<li class="mx-2 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300"><a href="#about">About</a></li>
+					<li class="mx-2 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300"><a href="#projects">Projects</a></li>
+					<li class="mx-2 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300"><a href="#experience">Experience</a></li>
 				</ul>
 			</nav>
 		</header>
 		<slot />
-		<footer>
+		<footer class="flex text-center">
+			<p>&copy; {title} {new Date().getFullYear()}</p>
 		</footer>
 	</body>
 </html>

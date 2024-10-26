@@ -1,3 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Perspective for 3D effect */
+.cube {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    animation: spin 5s infinite linear;
+}
+
+/* Each face positioning */
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: white;
+    opacity: 0.8;
+    backface-visibility: hidden;
+}
+
+.front  { transform: rotateY(0deg) translateZ(7rem); }
+.back   { transform: rotateY(180deg) translateZ(7rem); }
+.left   { transform: rotateY(-90deg) translateZ(7rem); }
+.right  { transform: rotateY(90deg) translateZ(7rem); }
+.top    { transform: rotateX(90deg) translateZ(7rem); }
+.bottom { transform: rotateX(-90deg) translateZ(7rem); }
+
+/* Animation for rotation */
+@keyframes spin {
+    from { transform: rotateX(0deg) rotateY(0deg); }
+    to   { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+
+@keyframes scroll-right-left {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translateX(-100px);
+    }
+}
+@keyframes scroll-left-right {
+    0% {
+        transform: translateX(-100px)
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Zig-zag animation keyframes */
+@keyframes zigzag {
+    0% { transform: translateX(100%) translateY(0); }
+    10% { transform: translateX(90%) translateY(-10px); }
+    20% { transform: translateX(80%) translateY(10px); }
+    30% { transform: translateX(70%) translateY(-10px); }
+    40% { transform: translateX(60%) translateY(10px); }
+    50% { transform: translateX(50%) translateY(-10px); }
+    60% { transform: translateX(40%) translateY(10px); }
+    70% { transform: translateX(30%) translateY(-10px); }
+    80% { transform: translateX(20%) translateY(10px); }
+    90% { transform: translateX(10%) translateY(-10px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+/* Applying the animation to the box */
+.zigzag-box {
+    animation: zigzag 40s ease-in-out infinite;
+}
+
+
+.scrolling-right-left {
+    animation: scroll-right-left 10s linear infinite;
+}
+
+.scrolling-left-right {
+    animation: scroll-left-right 10s linear infinite;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure the video stays behind the content */
+}

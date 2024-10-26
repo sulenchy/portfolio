@@ -1,0 +1,14 @@
+---
+import { Experience } from "../data/experience";
+
+
+const {title, company, location,  startDate, endDate, description } = Astro.props as Experience;
+---
+
+
+<li class="my-4 shadow-sm p-5 rounded scrolling">
+    <h3 class="text-xl font-semibold">{title} - {company}</h3>
+    <p class="text-sm text-gray-500">{startDate} - {endDate} | {location}</p>
+    <p>{description}</p>
+</li>
+

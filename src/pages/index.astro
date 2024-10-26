@@ -1,25 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import SkillCard from '../components/SkillCard.astro';
 import Projects from '../data/projects';
+import Experiences from '../data/experience';
+import Skills from '../data/skills';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Josh's Portoflio">
 	<main>
-		<div id="about" class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-			<h1 class="text-4xl font-bold text-center mb-4">Welcome to My Portfolio</h1>
-			<p class="text-lg text-center">Hi, I’m [Your Name], a Frontend Developer specialized in [Skills].</p>
-		</div>
-		<div id="projects" class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-			<h1 class="text-4xl font-bold text-center mb-4">Projects</h1>
-			{
-				Projects.map(project => {
-					console.log("===> ",{project})
-					const {title, description, technologies, liveLink, githubLink} = project;
-					return <ProjectCard title={title} description={description} technologies={technologies} liveLink={liveLink} githubLink={githubLink} />
-				})
-			}
+		<section id="about" class="h-screen mx-4 p-6 flex items-center justify-center">
+			<video autoplay muted loop>
+				<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			<div class="flex flex-row justify-center items-center space-x-5 bg-cover bg-center">
+				<div class="cube w-52 h-52 relative mr-20">
+					<!-- Cube Faces -->
+					<div class="face front bg-blue-500">
+						<span class="absolute">Integrity</span>
+						<img src="../../public/avatar.webp" alt="The owner avatar">
+					</div>
+					<div class="face back bg-green-500">
+						<span class="absolute">Back</span>
+						<img src="../../public/avatar.webp" alt="The owner avatar">
+					</div>
+					<div class="face left bg-red-500">
+						<span class="absolute">Left</span>
+						<img src="../../public/avatar.webp" alt="The owner avatar">
+					</div>
+					<div class="face right bg-yellow-500 ">
+						<span class="absolute">right</span>
+						<img src="../../public/avatar.webp" alt="The owner avatar">
+					</div>
+					<div class="face top bg-purple-500">
+						<span class="absolute">top</span>
+						<img src="../../public/avatar.webp" alt="The owner avatar">
+					</div>
+					<div class="face bottom bg-pink-500">
+						<span class="absolute">bottom</span>
+						<img src="../../public/avatar.webp" alt="The owner avatar">
+					</div>
+				</div>
+				<div class="text-white">
+					<h1 class="text-4xl font-bold text-center mb-4">Hi, I'm [Your Name] 👋 </h1>
+					<p class="text-lg text-center">[a tagline]. [A short summary of who you are]</p>
+				</div>
+			</div>
+		</section>
 
+		<section id="experience" class="h-screen w-full mx-auto p-6">
+			<h1 class="text-4xl font-bold text-center mb-4">Skills</h1>
+			<ul class="flex space-x-5 flex-col">
+				{Skills.map(skill => {
+					const { category, skills } = skill;
+					return <SkillCard category={category} skills={skills} />
+				})}
+			</ul>
+		</section>
+		<section id="experience" class="h-screen w-full mx-auto p-6 bg-gradient-to-br from-black via-white to-black">
+			<h1 class="text-4xl font-bold text-center mb-4">Experience</h1>
+			<ul class="flex space-x-5">
+				{Experiences.map(exp => {
+					const { title, company, location, startDate, endDate, description } = exp;
+					return <ExperienceCard title={title} company={company} location={location} startDate={startDate} endDate={endDate} />
+				})}
+			</ul>
+		</section>
+
+		<div id="projects" class="h-screen w-full bg-[url('./projects.jpeg')] bg-cover bg-center">
+			<h1 class="text-4xl font-bold text-center mb-4">Projects</h1>
+			<div class="w-full flex flex-wrap">
+				{
+					Projects.map(project => {
+						const {title, description, technologies, liveLink, githubLink} = project;
+						return <ProjectCard title={title} description={description} technologies={technologies} liveLink={liveLink} githubLink={githubLink} />
+					})
+				}
+			</div>
 		</div>
 	</main>
 </Layout>
