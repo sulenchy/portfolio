@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ExperienceCard from '../components/ExperienceCard.astro';
 import SkillCard from '../components/SkillCard.astro';
-import Projects from '../data/projects';
-import Experiences from '../data/experience';
-import Skills from '../data/skills';
+import {userInfo} from '../data/index';
+
+const { skills, experience, projects } = userInfo;
 ---
 
 <Layout title="Josh's Portoflio">
@@ -20,7 +20,7 @@ import Skills from '../data/skills';
 					<!-- Cube Faces -->
 					<div class="face front bg-blue-500">
 						<span class="absolute">Integrity</span>
-						<img src="../../public/avatar.webp" alt="The owner avatar">
+						<img src="https://github.com/user-attachments/assets/3d88aa16-c3ff-422f-b90e-027eef94a38d" alt="The owner avatar">
 					</div>
 					<div class="face back bg-green-500">
 						<span class="absolute">Back</span>
@@ -44,42 +44,46 @@ import Skills from '../data/skills';
 					</div>
 				</div>
 				<div class="text-white">
-					<h1 class="text-4xl font-bold text-center mb-4">Hi, I'm [Your Name] 👋 </h1>
-					<p class="text-lg text-center">[a tagline]. [A short summary of who you are]</p>
+					<h1 class="text-4xl font-bold text-center mb-4">Hi, I'm {userInfo.fullName} 👋 </h1>
+					<p class="text-lg text-center">{userInfo.tagline}.</p>
+					<p class="text-lg text-center">{userInfo.shortSummary}.</p>
 				</div>
 			</div>
 		</section>
 
-		<section id="experience" class="h-screen w-full mx-auto p-6">
+		<section id="skills" class="h-screen  w-full flex justify-center flex-col items-center mx-auto p-6">
 			<h1 class="text-4xl font-bold text-center mb-4">Skills</h1>
-			<ul class="flex space-x-5 flex-col">
-				{Skills.map(skill => {
+			<ul class="flex flex-col w-2/3 overflow-hidden">
+				{skills.slice(0,4).map(skill => {
 					const { category, skills } = skill;
 					return <SkillCard category={category} skills={skills} />
 				})}
 			</ul>
+			{skills.length > 4 && <a href="" class="mx-2 mt-5 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300">View More</a>}
 		</section>
-		<section id="experience" class="h-screen w-full mx-auto p-6 bg-gradient-to-br from-black via-white to-black">
+		<section id="experience" class="h-screen  w-full flex justify-center flex-col items-center mx-auto p-6 bg-gradient-to-br from-black via-white to-black">
 			<h1 class="text-4xl font-bold text-center mb-4">Experience</h1>
-			<ul class="flex space-x-5">
-				{Experiences.map(exp => {
+			<ul class="flex gap-5 justify-center">
+				{experience.slice(0,4).map(exp => {
 					const { title, company, location, startDate, endDate, description } = exp;
 					return <ExperienceCard title={title} company={company} location={location} startDate={startDate} endDate={endDate} />
 				})}
 			</ul>
+			{experience.length > 4 && <a href="" class="mx-2 mt-5 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300">View More</a>}
 		</section>
 
-		<div id="projects" class="h-screen w-full bg-[url('./projects.jpeg')] bg-cover bg-center">
-			<h1 class="text-4xl font-bold text-center mb-4">Projects</h1>
-			<div class="w-full flex flex-wrap">
+		<section id="projects" class="h-screen w-full flex justify-center flex-col items-center">
+			<h1 class="text-4xl font-bold text-center mb-10">Projects</h1>
+			<div class="w-full flex flex-wrap gap-5 justify-center">
 				{
-					Projects.map(project => {
+					userInfo.projects.slice(0,4).map(project => {
 						const {title, description, technologies, liveLink, githubLink} = project;
 						return <ProjectCard title={title} description={description} technologies={technologies} liveLink={liveLink} githubLink={githubLink} />
 					})
 				}
 			</div>
-		</div>
+			{projects.length > 4 && <a href="" class="mx-2 mt-5 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300">View More</a>}
+		</section>
 	</main>
 </Layout>
 		
