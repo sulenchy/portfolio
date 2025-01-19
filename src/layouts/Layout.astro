@@ -16,19 +16,50 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script>
+			const menuToggle = document.getElementById('menuToggle');
+			const navLinks = document.getElementById('navLinks');
+			const line1 = document.getElementById('line1');
+			const line2 = document.getElementById('line2');
+			const line3 = document.getElementById('line3');
+		
+			menuToggle.addEventListener('click', () => {
+			  navLinks.classList.toggle('hidden');
+		
+			  // Animate lines
+			  line1.classList.toggle('rotate-45');
+			  line3.classList.toggle('-rotate-45');
+			  line1.classList.toggle('translate-y-2');
+			  line3.classList.toggle('-translate-y-2');
+			  line2.classList.toggle('opacity-0');
+			});
+		</script>
 	</head>
-	<body class="min-h-screen flex flex-col justify-center bg-gray-50">
-		<header class="w-full bg-white shadow-lg mb-5 flex h-20 items-center px-52 sticky top-0 z-10">
-			<a href="/" id="logo" class="mx-5 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300">Home</a>
-			<nav class="w-full">
-				<ul class="w-full flex justify-end">
-					<li class="mx-2 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300"><a href="#about">About</a></li>
-					<li class="mx-2 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300"><a href="#skills">Skills</a></li>
-					<li class="mx-2 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300"><a href="#projects">Projects</a></li>
-					<li class="mx-2 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300"><a href="#experience">Experience</a></li>
+	<body class="w-full border-2 border-red-900 m-0 p-0 flex flex-col justify-center bg-gray-50 text-2xl lg:text-xl">
+		<header class="bg-white shadow-md sticky top-0 z-50">
+			<nav class="container mx-auto flex items-center justify-between p-4">
+			  <!-- Logo -->
+			  <div class="text-2xl font-bold text-blue-500"><a href="#intro">Sir Josh</a></div>
+		
+			  <!-- Hamburger & Links -->
+			  <div class="relative">
+				<!-- Animated Hamburger Icon -->
+				<button id="menuToggle" class="flex flex-col gap-1 md:hidden focus:outline-none">
+				  <span class="w-6 h-1 bg-gray-600 transition-transform origin-center duration-300" id="line1"></span>
+				  <span class="w-6 h-1 bg-gray-600 transition-opacity duration-300" id="line2"></span>
+				  <span class="w-6 h-1 bg-gray-600 transition-transform origin-center duration-300" id="line3"></span>
+				</button>
+		
+				<!-- Navigation Links -->
+				<ul id="navLinks" class="absolute top-12 right-0 bg-white shadow-lg rounded-md md:static md:flex md:space-x-8 md:shadow-none md:bg-transparent md:items-center md:top-auto md:right-auto hidden md:flex">
+				  <li><a href="#intro" class="block px-4 py-2 text-gray-600 hover:text-blue-500 transition">Home</a></li>
+				  <li><a href="#skills" class="block px-4 py-2 text-gray-600 hover:text-blue-500 transition">Skills</a></li>
+				  <li><a href="#experience" class="block px-4 py-2 text-gray-600 hover:text-blue-500 transition">Experience</a></li>
+				  <li><a href="#projects" class="block px-4 py-2 text-gray-600 hover:text-blue-500 transition">Projects</a></li>
 				</ul>
+			  </div>
 			</nav>
-		</header>
+		  </header>
 		<slot />
 		<footer class="flex text-center">
 			<p>&copy; {title} {new Date().getFullYear()}</p>

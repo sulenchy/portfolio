@@ -10,14 +10,16 @@ const { skills, experience, projects } = userInfo;
 
 <Layout title="Josh's Portoflio">
 	<main>
-		<section id="about" class="h-screen mx-4 p-6 flex items-center justify-center">
-			<video autoplay muted loop>
+		<section id="intro" class="h-screen mx-4 p-6 flex items-center justify-center">
+			<!-- <video autoplay muted loop>
 				<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
 				Your browser does not support the video tag.
-			</video>
-			<div class="flex flex-row justify-center items-center space-x-5 bg-cover bg-center">
-				<div class="cube w-52 h-52 relative mr-20">
-					<!-- Cube Faces -->
+			</video> -->
+			<!-- Overlay -->
+  			<!-- <div class="absolute inset-0 bg-black bg-opacity-40"></div> -->
+			<div class="flex flex-col-reverse md:flex-row justify-center items-center space-x-5 bg-cover bg-center">
+				<!--<div class="cube w-52 h-52 relative mr-20">
+
 					<div class="face front bg-blue-500">
 						<span class="absolute">Integrity</span>
 						<img src="https://github.com/user-attachments/assets/3d88aa16-c3ff-422f-b90e-027eef94a38d" alt="The owner avatar">
@@ -42,16 +44,24 @@ const { skills, experience, projects } = userInfo;
 						<span class="absolute">Growth Mindset</span>
 						<img src="https://github.com/user-attachments/assets/3d88aa16-c3ff-422f-b90e-027eef94a38d" alt="The owner avatar">
 					</div>
+				</div>-->
+				
+
+				<div class="w-52 h-52 flex justify-center relative mr-20">
+					<div class="face front w-full bg-blue-500">
+						<img src="https://github.com/user-attachments/assets/3d88aa16-c3ff-422f-b90e-027eef94a38d" alt="The owner avatar">
+					</div>
 				</div>
-				<div class="text-white">
-					<h1 class="text-4xl font-bold text-center mb-4">Hi, I'm {userInfo.fullName} 👋 </h1>
-					<p class="text-lg text-center">{userInfo.tagline}.</p>
-					<p class="text-lg text-center">{userInfo.shortSummary}.</p>
+
+				<div class="text-black">
+					<h1 class="md:text-4xl font-bold text-center mb-4">Hi, I'm {userInfo.fullName} 👋 </h1>
+					<p class="md:text-lg text-center">{userInfo.tagline}.</p>
+					<p class="md:text-lg text-center">{userInfo.shortSummary}.</p>
 				</div>
 			</div>
 		</section>
 
-		<section id="skills" class="h-screen  w-full flex justify-center flex-col items-center mx-auto p-6">
+		<section id="skills" class="md:h-screen w-full flex justify-center flex-col items-center mx-auto p-6">
 			<h1 class="text-4xl font-bold text-center mb-4">Skills</h1>
 			<ul class="flex flex-col w-2/3 overflow-hidden">
 				{skills.slice(0,4).map(skill => {
@@ -61,9 +71,9 @@ const { skills, experience, projects } = userInfo;
 			</ul>
 			{skills.length > 4 && <a href="" class="mx-2 mt-5 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300">View More</a>}
 		</section>
-		<section id="experience" class="h-screen  w-full flex justify-center flex-col items-center mx-auto p-6 bg-gradient-to-br from-black via-white to-black">
+		<section id="experience" class="md:h-screen w-full flex justify-center flex-col items-center mx-auto p-6 bg-gradient-to-br from-black via-white to-black">
 			<h1 class="text-4xl font-bold text-center mb-4">Experience</h1>
-			<ul class="flex gap-5 justify-center">
+			<ul class="flex flex-col md:flex-row gap-5 justify-center">
 				{experience.slice(0,4).map(exp => {
 					const { title, company, location, startDate, endDate, description } = exp;
 					return <ExperienceCard title={title} company={company} location={location} startDate={startDate} endDate={endDate} />
@@ -72,9 +82,9 @@ const { skills, experience, projects } = userInfo;
 			{experience.length > 4 && <a href="" class="mx-2 mt-5 w-24 hover:shadow-md text-center h-10 flex justify-center items-center hover:rounded hover:text-blue-300">View More</a>}
 		</section>
 
-		<section id="projects" class="h-screen w-full flex justify-center flex-col items-center">
+		<section id="projects" class="md:h-screen w-full flex justify-center flex-col items-center">
 			<h1 class="text-4xl font-bold text-center mb-10">Projects</h1>
-			<div class="w-full flex flex-wrap gap-5 justify-center">
+			<div class="w-full flex flex-col md:flex-row flex-wrap gap-5 justify-center">
 				{
 					userInfo.projects.slice(0,4).map(project => {
 						const {title, description, technologies, liveLink, githubLink} = project;
