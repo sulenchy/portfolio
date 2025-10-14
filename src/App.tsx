@@ -14,6 +14,9 @@ import projectsData from '../public/content/projects.json';
 import skillsData from '../public/content/skills.json';
 import experienceData from '../public/content/experience.json';
 
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import ContactForm from './contactForm';
+
 interface IAbout {
   greeting: string;
   bio: string;
@@ -120,7 +123,7 @@ function App() {
             <div id="bulb-wrapper" className='cursor-pointer bg-white' title="dark mode switch" onClick={ toggleDarkMode } style={{borderRadius: '50%',height: '20px', width: '20px', marginLeft: '10px' }}>
               <MoonIcon id="bulb" className={`w-5 ${darkMode ? 'text-blue-400' : 'text-black'}`} />
             </div>
-            <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out">
+            <span className="md:ml-5 p-2 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out">
               <a href="#about-me">abi.dev</a>
             </span>
           </div>
@@ -129,19 +132,19 @@ function App() {
         <div className="w-full md:w-2/3 hidden md:block" ref={ headerRef }>
           <nav className="">
             <ul className="list-none text-left  md:flex justify-end">
-              <li key="skills" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#skills">Skills</a></li>
-              <li key="experiences" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#experiences">Experiences</a></li>
-              <li key="projects" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#projects">Projects</a></li>
-              <li key="contacts" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contacts</a></li>
-              <li key="resume" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href={ Resume } download="abi-resume.pdf" title='download resume'>resume</a></li>
+              <li key="skills" className="p-2 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#skills">Skills</a></li>
+              <li key="experiences" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#experiences">Experiences</a></li>
+              <li key="projects" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#projects">Projects</a></li>
+              <li key="contacts" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contacts</a></li>
+              <li key="resume" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href={ Resume } download="abi-resume.pdf" title='download resume'>resume</a></li>
             </ul>
           </nav>
         </div>
       </header>
       <article className="filter drop-shadow">
         <section id="about-me" className="w-full md:h-screen pt-20 bg-[url(../public/assets/bg.jpeg))] bg-about-image md:bg-repeat-round mix-blend-multiply bg-center bg-cover bg-no-repeat">
-          <div className="w-60 h-60 absolute inset-24 md:hidden">
-            <img className="rounded-full opacity-50" src={about?.avatar} alt=""/>
+          <div id="avatar" className="w-60 h-60 absolute inset-24 hidden lg:block">
+            <img className="rounded-full opacity-50" src={about?.avatar} alt="abi's headshot"/>
             <span className="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-blue-900 opacity-75"></span>
           </div>
           <div className="text-white text-3xl flex flex-col justify-center items-center md:w-2/3 md:h-screen m-auto space-x-9 font-serif p-5 relative">
@@ -218,7 +221,7 @@ function App() {
               <div className="mb-5 md:flex items-center justify-center flex-wrap md:w-full">
                 {
                     projectArr.map((project: IProject) => (
-                      <div key={ project.name } id={ project.name } className="md:w-2/5 m-2 p-5 rounded transition delay-150 duration-300 ease-out text-left drop-shadow filter hover:shadow">
+                      <div key={ project.name } id={ project.name } className="md:w-2/5 m-2 p-5 rounded transition delay-150 duration-300 ease-out text-left drop-shadow filter hover:shadow-lg hover:scale-105">
                         <div>
                           <span className="text-xl font-medium text-black dark:text-white">{project.name}</span>
                           <p className="text-gray-500 text-justify">{project.description}</p>
@@ -244,12 +247,15 @@ function App() {
           </header>
           <nav className="md:flex">
             <ul className="list-none text-left  md:flex justify-end">
-              <li key="facebook" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.facebook.com/sulenchy" target="_blank" rel="noreferrer">Facebook</a></li>
-              <li key="github" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.github.com/sulenchy" target="_blank" rel="noreferrer">Github</a></li>
-              <li key="twitter" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.twitter.com/ababsul" target="_blank" rel="noreferrer">Twitter</a></li>
-              <li key="linkedIn" className="p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.linkedin.com/in/abudu-abiodun-751b12b0/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li key="facebook" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.facebook.com/sulenchy" target="_blank" rel="noreferrer">Facebook</a></li>
+              <li key="github" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.github.com/sulenchy" target="_blank" rel="noreferrer">Github</a></li>
+              <li key="twitter" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.twitter.com/ababsul" target="_blank" rel="noreferrer">Twitter</a></li>
+              <li key="linkedIn" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.linkedin.com/in/abudu-abiodun-751b12b0/" target="_blank" rel="noreferrer">LinkedIn</a></li>
             </ul>
           </nav>
+          <GoogleReCaptchaProvider reCaptchaKey="6Lf5heorAAAAACOqr5aDdrfSOaM0KRP_nhcaGk37">
+            <ContactForm />
+          </GoogleReCaptchaProvider>
         </section>
       </article>
       <footer  className="text-center">
