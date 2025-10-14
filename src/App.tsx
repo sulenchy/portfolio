@@ -84,6 +84,16 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(false);
 
+  useEffect(() => {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(isDarkMode);
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   const toggleNav = (): void => {
     const classList: DOMTokenList | undefined = headerRef.current?.classList;
     classList?.value.split(' ').includes('hidden') ?
@@ -92,8 +102,14 @@ function App() {
   }
 
   const toggleDarkMode = () : void => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark')
+    const isDarkMode = !darkMode;
+    setDarkMode(isDarkMode);
+    localStorage.setItem('darkMode', isDarkMode.toString());
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }
   
   return (
@@ -123,10 +139,8 @@ function App() {
         </div>
       </header>
       <article className="filter drop-shadow">
-        <section id="about-me" className="w-full md:h-screen bg-about-image pt-20 md:bg-repeat-round mix-blend-multiply" style={{
-          backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'
-        }}>
-          <div className="w-60 h-60 absolute inset-24">
+        <section id="about-me" className="w-full md:h-screen pt-20 bg-[url(../public/assets/bg.jpeg))] bg-about-image md:bg-repeat-round mix-blend-multiply bg-center bg-cover bg-no-repeat">
+          <div className="w-60 h-60 absolute inset-24 md:hidden">
             <img className="rounded-full opacity-50" src={about?.avatar} alt=""/>
             <span className="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-blue-900 opacity-75"></span>
           </div>
@@ -139,7 +153,7 @@ function App() {
               <ul className="text-black flex flex-wrap items-center justify-center">
                 {
                 skillArr.map(({ name, yearsOfExperience }: ISkill, index) => (
-                  <li key={ `${name}-${index}` } id={ name } className="h-50 rounded bg-gray-400 m-1 p-5">{ name } { yearsOfExperience } yrs</li>
+                  <li key={ `${name}-${index}` } id={ name } className="rounded bg-gray-400 m-1 p-5">{ name } <span>|</span> { yearsOfExperience } yrs</li>
                 ) )
               }
               </ul>
@@ -154,12 +168,10 @@ function App() {
           </header>
           <nav className="pl-10 md:w-2/3 flex-col mx-auto">
             <ul className="list-square text-2xl font-light leading-10 flex flex-wrap flex-col">
-              <li key="skill1" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Programming with Javascript, Typescript and C#</li>
-              <li key="skill2" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Web development using ReactJS and Redux</li>
-              <li key="skill3" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Restful microservices development using NodeJS and express</li>
-              <li key="skill4" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Web scrapping using scrapping packages such as pupetteer</li>
-              <li key="skill5" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Mobile development using Java and React-Native</li>
-              <li key="skill6" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">Containerization with Docker</li>
+              {skillArr.map(({ description }: ISkill, index) => (
+                <li key="skill1" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">{description}</li>
+              ))}
+
             </ul>
           </nav>
         </section>

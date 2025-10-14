@@ -2,6 +2,19 @@
   "experience": [
     {
         "id": "1",
+        "companyName": "Noroff School of Technology and Digital Media",
+        "skillsDemonstrated": ["1", "4", "10", "5", "6"],
+        "achievement": "Responsible for content development, teaching, and student management while overseeing project coordination and delivery. Developed learning materials and guided students through practical coursework and projects, ensuring alignment with vocational and academic standards.",
+        "startDate": "April, 2022",
+        "endDate": "",
+        "links": {
+            "companyUrl": "https://www.noroff.no/en/"
+        },
+        "location": "Norway (Remote)",
+        "role": "Frontend Online Teacher"
+    },
+    {
+        "id": "2",
         "companyName": "Andela",
         "skillsDemonstrated": ["1", "4", "9", "5"],
         "achievement": "I was assigned to work with snaps inc",
@@ -14,7 +27,7 @@
         "role": "Frontend Engineer"
     },
     {
-        "id": "2",
+        "id": "3",
         "companyName": "Snaps Media Inc(Now Quiq)",
         "skillsDemonstrated": ["1", "4", "9", "5"],
         "achievement": "Built edit tag functionality into the CMS. Collaborated with a team member to build web actions functionality which increases the flexibility and efficiency of snaps bot. Resolved some parities between users and journey properties and transcript properties which causes confusion among users who expected no difference between the properties. Built multi-select functionality for the bot UI",

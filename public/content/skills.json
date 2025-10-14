@@ -4,61 +4,67 @@
         "id": "1",
         "description": "Programming with Javascript",
         "name": "Javascript",
-        "yearsOfExperience": 3
+        "yearsOfExperience": 8
     },
     {
         "id": "2",
         "description": "Programming with Typescript",
         "name": "Typescript",
-        "yearsOfExperience": 2
+        "yearsOfExperience": 4
     },
     {
         "id": "3",
         "description": "Programming with C#",
         "name": "C#",
-        "yearsOfExperience": 2
+        "yearsOfExperience": 3
     },
     {
         "id": "4",
         "description": "Web development using ReactJS, React Context API, and React Hooks",
         "name": "ReactJS",
-        "yearsOfExperience": 3
+        "yearsOfExperience": 6
     },
     {
         "id": "5",
         "description": "State management using Redux and Redux Hooks",
         "name": "Redux",
-        "yearsOfExperience": 3
+        "yearsOfExperience": 6
     },
     {
         "id": "6",
         "description": "Restful Microservice development using NodeJS",
         "name": "NodeJS",
-        "yearsOfExperience": 3
+        "yearsOfExperience": 8
     },
     {
         "id": "7",
         "description": "Containerisation with Docker",
         "name": "Docker",
-        "yearsOfExperience": 2
+        "yearsOfExperience": 4
     },
     {
         "id": "8",
         "description": "Mobile App development with Java",
         "name": "Java",
-        "yearsOfExperience": 1
+        "yearsOfExperience": 2
     },
     {
         "id": "9",
         "description": "Mobile App development with React Native",
         "name": "React Native",
-        "yearsOfExperience": 1
+        "yearsOfExperience": 2
     },
     {
         "id": "10",
         "description": "Web development using HTML and CSS",
         "name": "HTML and CSS",
-        "yearsOfExperience": 5
+        "yearsOfExperience": 8
+    },
+    {
+        "id": "11",
+        "description": "Mentorship and Teaching with Zoom, Team, Moodle, GoogleMeet",
+        "name": "Mentorship and Teaching",
+        "yearsOfExperience": 7
     }
   ]
 }

@@ -1,7 +1,8 @@
 backend:
   name: github
   repo: sulenchy/portfolio
-  branch: main
+  branch: master
+  base_url: http://127.0.0.1:5501
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
@@ -10,19 +11,20 @@ collections:
   - name: "about"
     label: "About Me"
     files:
-      - file: "content/about.json"
+      - file: "public/content/about.json"
         label: "About Me"
         name: "about"
         fields:
           - { label: "Greeting", name: "greeting", widget: "string" }
           - { label: "Bio", name: "bio", widget: "text" }
           - { label: "Avatar", name: "avatar", widget: "image" }
+          - { label: "BgImage", name: "bgImage", widget: "image" }
 
   # 🧱 PROJECTS COLLECTION
   - name: "projects"
     label: "Projects"
     files:
-      - file: "content/projects.json"
+      - file: "public/content/projects.json"
         label: "Projects"
         name: "projects"
         fields:
@@ -61,7 +63,7 @@ collections:
   - name: "skills"
     label: "Skills"
     files:
-      - file: "content/skills.json"
+      - file: "public/content/skills.json"
         label: "Skills"
         name: "skills"
         fields:
@@ -78,7 +80,7 @@ collections:
   - name: "experience"
     label: "Experience"
     files:
-      - file: "content/experience.json"
+      - file: "public/content/experience.json"
         label: "Experience"
         name: "experience"
         fields:

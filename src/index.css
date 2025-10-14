@@ -1,2 +1,10 @@
 /** include Tailwind styles */
 @import "tailwindcss";
+@layer utilities {
+    bg-about-image {
+        background-image: url('../public/assets/bg.jpeg');
+    }
+}
+@custom-variant dark (&:where(.dark, .dark *));
+
+

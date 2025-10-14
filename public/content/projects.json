@@ -2,45 +2,45 @@
   "projects": [
     {
         "id": "1",
-        "name": "Twitter Clone",
-        "description": "This is a clone of twitter app. It has some basic functionalities such as the Add new tweet, like tweet, load tweet(s) etc. It was built during my Udacity React Nanodegree.",
+        "name": "Stock-it-app",
+        "description": "A simple inventory management application built with Electron, React, and TypeScript.",
         "skillDemonstrated": [],
-        "languages": ["ReactJS", "Redux", "Javascript", "HTML", "CSS"],
+        "languages": ["ReactJS", "Zustand", "Typescript", "HTML", "TailwindCSS", "Electron"],
         "isDeployed": false,
         "links": {
             "github": {
                 "githubType": "Public",
-                "link": "https://github.com/sulenchy/twitter-clone"
+                "link": "https://github.com/sulenchy/stock-it-app"
             },
             "deployed": ""
         }
     },
     {
         "id": "2",
-        "name": "Would You Rather?",
-        "description": "It is a web app that lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering 'neither' or 'both' is against the rules.",
+        "name": "Nigeria Tax Calculator",
+        "description": "A mobile application to calculate personal income tax in Nigeria.” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering 'neither' or 'both' is against the rules.",
         "skillDemonstrated": [],
-        "languages": ["Javascript", "React", "Redux", "TailwindCss"],
+        "languages": ["Expo", "ReactNative", "React Navigation", "React Native Chart Kit"],
         "isDeployed": false,
         "links": {
             "github": {
                 "githubType": "Public",
-                "link": "https://github.com/sulenchy/would-you-rather"
+                "link": "https://github.com/sulenchy/NigeriaTaxApp"
             },
             "deployed": ""
         }
     },
     {
         "id": "3",
-        "name": "Edugate(still in progress)",
-        "description": "This project is titled Edugate. The idea behind this project centers around providing result management system to schools expecially high school around the globe.",
+        "name": "Evolym-website",
+        "description": "This is an e-commerce and blog platform built with Next.js, TypeScript, and Tailwind CSS.",
         "skillDemonstrated": [],
-        "languages": ["Javascript", "Redux", "React", "styledComponent"],
+        "languages": ["Typescript", "Redux Toolkit", "Nextjs", "Tailwindcss"],
         "isDeployed": false,
         "links": {
             "github": {
                 "githubType": "Private",
-                "link": "https://github.com/sulenchy/Edugate"
+                "link": "https://github.com/sulenchy/evolym-website"
             },
             "deployed": ""
         }
@@ -55,9 +55,9 @@
         "links": {
             "github": {
                 "githubType": "Public",
-                "link": "https://github.com/sulenchy/Edugate"
+                "link": "https://github.com/sulenchy/SearchResearch"
             },
-            "deployed": "https://blooming-peak-97299.herokuapp.com/static/"
+            "deployed": ""
         }
     }
   ]
