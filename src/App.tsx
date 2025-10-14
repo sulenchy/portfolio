@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import Resume from './resume.pdf';
+import { useRef, useState, useEffect } from 'react';
+import Resume from '../public/resume.pdf';
 import {
   ShieldCheckIcon,
   BriefcaseIcon,
@@ -9,21 +9,78 @@ import {
   MenuIcon,
   MoonIcon
 } from '@heroicons/react/solid'
-import avatar from  './avatar.jpg';
-import { 
-  IExpr,
-  IProject,
-  ISkill,
-  getSkillArr,
-  getProjectArr,
-  getExprArr,
-  skills } from './data';
+import aboutData from '../public/content/about.json';
+import projectsData from '../public/content/projects.json';
+import skillsData from '../public/content/skills.json';
+import experienceData from '../public/content/experience.json';
+
+interface IAbout {
+  greeting: string;
+  bio: string;
+  avatar: string;
+}
+
+type githubType = "Public" | "Private"
+
+interface IGithub {
+    githubType?: githubType,
+    link: string 
+}
+interface ILink {
+    github: IGithub,
+    deployed: string
+}
+
+export interface IProject {
+    id: string,
+    name: string,
+    description: string,
+    skillDemonstrated: string[]
+    languages: string[]
+    isDeployed: boolean
+    links: ILink
+}
+
+export interface ISkill {
+    id: string,
+    description: string,
+    name: string,
+    yearsOfExperience: number
+}
+
+interface ISkillSet {
+    [key: string]: ISkill
+}
+
+interface ICompanyLinks {
+    [key: string]: string
+}
+
+export interface IExpr {
+    id: string,
+    companyName: string,
+    skillsDemonstrated: string[],
+    achievement: string,
+    startDate: string,
+    endDate: string,
+    links: ICompanyLinks,
+    location: string,
+    role: string,
+}
 
 function App() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const experienceArr : Array<IExpr> = getExprArr();
-  const projectArr :  Array<IProject> = getProjectArr();
-  const skillArr :  Array<ISkill> = getSkillArr();
+  const experienceArr : Array<IExpr> = experienceData.experience;
+  const projectArr :  any = projectsData.projects;
+  const skillArr :  Array<ISkill> = skillsData.skills;
+  const skills: ISkillSet = skillArr.reduce((acc, skill) => ({...acc, [skill.id]: skill }), {});
+
+  const [about, setAbout] = useState<IAbout | null>(null);
+
+  useEffect(() => {
+    setAbout(aboutData);
+    
+  }, []);
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -44,7 +101,7 @@ function App() {
       <header className="w-full md:h-20 items-center md:flex bg-blue-400 dark:bg-black border-b-2 border-white text-white text-2xl fixed z-20">
         <div className="w-full md:w-1/3 flex  justify-between">
           <div className="flex flex-row w-1/3 items-center">
-            <div id="bulb-wrapper" className='cursor-pointer bg-white' title="dark mode switch" onClick={ toggleDarkMode } style={{ borderRadius: '50%',height: '20px', width: '20px', marginLeft: '10px' }}>
+            <div id="bulb-wrapper" className='cursor-pointer bg-white' title="dark mode switch" onClick={ toggleDarkMode } style={{borderRadius: '50%',height: '20px', width: '20px', marginLeft: '10px' }}>
               <MoonIcon id="bulb" className={`w-5 ${darkMode ? 'text-blue-400' : 'text-black'}`} />
             </div>
             <span className="md:ml-5 p-5 rounded-r-2xl hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out">
@@ -70,14 +127,13 @@ function App() {
           backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'
         }}>
           <div className="w-60 h-60 absolute inset-24">
-            <img className="rounded-full opacity-50" src={avatar} alt=""/>
+            <img className="rounded-full opacity-50" src={about?.avatar} alt=""/>
             <span className="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-blue-900 opacity-75"></span>
           </div>
           <div className="text-white text-3xl flex flex-col justify-center items-center md:w-2/3 md:h-screen m-auto space-x-9 font-serif p-5 relative">
-            <h2>Hello, I am Abi</h2>
+            <h2>{about?.greeting}</h2>
             <div className="text-2xl mt-10 font-light leading-10" style={{ marginLeft: '0' }}>
-              <p>I am a fullstack software engineer. I am interested in automation of systems.</p>
-              <p>I program with Javascript, Typescript and c#(currently rusty). I am open to new opportunities especially ones that allow learning new skills set.</p>
+              {about?.bio.split('\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}
             </div>
             <div className="flex justify-start text-sm" style={{ marginLeft: '0' }}>
               <ul className="text-black flex flex-wrap items-center justify-center">

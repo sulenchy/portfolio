@@ -1,0 +1,30 @@
+{
+  "experience": [
+    {
+        "id": "1",
+        "companyName": "Andela",
+        "skillsDemonstrated": ["1", "4", "9", "5"],
+        "achievement": "I was assigned to work with snaps inc",
+        "startDate": "Oct, 2018",
+        "endDate": "",
+        "links": {
+            "companyUrl": "www.andela.com"
+        },
+        "location": "Lagos, Nigeria",
+        "role": "Frontend Engineer"
+    },
+    {
+        "id": "2",
+        "companyName": "Snaps Media Inc(Now Quiq)",
+        "skillsDemonstrated": ["1", "4", "9", "5"],
+        "achievement": "Built edit tag functionality into the CMS. Collaborated with a team member to build web actions functionality which increases the flexibility and efficiency of snaps bot. Resolved some parities between users and journey properties and transcript properties which causes confusion among users who expected no difference between the properties. Built multi-select functionality for the bot UI",
+        "startDate": "July, 2019",
+        "endDate": "Aug, 2021",
+        "links": {
+            "companyUrl": "www.app.snaps.io"
+        },
+        "location": "New York, United State",
+        "role": "Fullstack Software Engineer"
+    }
+  ]
+}
