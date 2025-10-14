@@ -117,13 +117,13 @@ function App() {
   
   return (
     <div className="dark:bg-black dark:text-white text-center sm:w-full">
-      <header className="w-full md:h-20 items-center md:flex bg-blue-400 dark:bg-black border-b-2 border-white text-white text-2xl fixed z-20">
-        <div className="w-full md:w-1/3 flex  justify-between">
+      <header className="w-full md:h-20 items-center md:flex bg-gray-900 dark:bg-black border-b-2 border-white text-white text-2xl fixed z-20">
+        <div className="w-full md:w-1/3 flex justify-between">
           <div className="flex flex-row w-1/3 items-center">
             <div id="bulb-wrapper" className='cursor-pointer bg-white' title="dark mode switch" onClick={ toggleDarkMode } style={{borderRadius: '50%',height: '20px', width: '20px', marginLeft: '10px' }}>
               <MoonIcon id="bulb" className={`w-5 ${darkMode ? 'text-blue-400' : 'text-black'}`} />
             </div>
-            <span className="md:ml-5 p-2 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-in-out">
+            <span className="md:ml-5 p-2 hover:bg-gray-700 cursor-pointer transition delay-150 duration-300 ease-in-out">
               <a href="#about-me">abi.dev</a>
             </span>
           </div>
@@ -132,134 +132,133 @@ function App() {
         <div className="w-full md:w-2/3 hidden md:block" ref={ headerRef }>
           <nav className="">
             <ul className="list-none text-left  md:flex justify-end">
-              <li key="skills" className="p-2 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#skills">Skills</a></li>
-              <li key="experiences" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#experiences">Experiences</a></li>
-              <li key="projects" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#projects">Projects</a></li>
-              <li key="contacts" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contacts</a></li>
-              <li key="resume" className="p-2  hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href={ Resume } download="abi-resume.pdf" title='download resume'>resume</a></li>
+              <li key="skills" className="p-2 hover:bg-gray-700 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#skills">Skills</a></li>
+              <li key="experiences" className="p-2  hover:bg-gray-700 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#experiences">Experiences</a></li>
+              <li key="projects" className="p-2  hover:bg-gray-700 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#projects">Projects</a></li>
+              <li key="contacts" className="p-2  hover:bg-gray-700 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#contacts">Contacts</a></li>
+              <li key="resume" className="p-2  hover:bg-gray-700 cursor-pointer transition delay-150 duration-300 ease-out"><a href={ Resume } download="abi-resume.pdf" title='download resume'>resume</a></li>
             </ul>
           </nav>
         </div>
       </header>
       <article className="filter drop-shadow">
-        <section id="about-me" className="w-full md:h-screen pt-20 bg-[url(../public/assets/bg.jpeg))] bg-about-image md:bg-repeat-round mix-blend-multiply bg-center bg-cover bg-no-repeat">
-          <div id="avatar" className="w-60 h-60 absolute inset-24 hidden lg:block">
-            <img className="rounded-full opacity-50" src={about?.avatar} alt="abi's headshot"/>
-            <span className="animate-ping absolute inline-flex h-10 w-10 rounded-full bg-blue-900 opacity-75"></span>
-          </div>
-          <div className="text-white text-3xl flex flex-col justify-center items-center md:w-2/3 md:h-screen m-auto space-x-9 font-serif p-5 relative">
-            <h2>{about?.greeting}</h2>
-            <div className="text-2xl mt-10 font-light leading-10" style={{ marginLeft: '0' }}>
-              {about?.bio.split('\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-            </div>
-            <div className="flex justify-start text-sm" style={{ marginLeft: '0' }}>
-              <ul className="text-black flex flex-wrap items-center justify-center">
-                {
-                skillArr.map(({ name, yearsOfExperience }: ISkill, index) => (
-                  <li key={ `${name}-${index}` } id={ name } className="rounded bg-gray-400 m-1 p-5">{ name } <span>|</span> { yearsOfExperience } yrs</li>
-                ) )
-              }
-              </ul>
-              
+        <section id="about-me" className="w-full md:h-screen pt-20 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center justify-center">
+              <div className="md:w-1/2 flex justify-center">
+                <img className="rounded-full w-60 h-60 mb-4" src={about?.avatar} alt="abi's headshot"/>
+              </div>
+              <div className="md:w-1/2 text-center md:text-left">
+                <h2 className="text-4xl font-bold mb-4">{about?.greeting}</h2>
+                <div className="text-lg">
+                  {about?.bio.split('\n').map((paragraph, index) => <p key={index} className="mb-4">{paragraph}</p>)}
+                </div>
+                <div className="flex space-x-4">
+                  <a href="https://www.facebook.com/sulenchy" target="_blank" rel="noreferrer" className="hover:text-blue-500">Facebook</a>
+                  <a href="https://www.github.com/sulenchy" target="_blank" rel="noreferrer" className="hover:text-blue-500">Github</a>
+                  <a href="https://www.twitter.com/ababsul" target="_blank" rel="noreferrer" className="hover:text-blue-500">Twitter</a>
+                  <a href="https://www.linkedin.com/in/abudu-abiodun-751b12b0/" target="_blank" rel="noreferrer" className="hover:text-blue-500">LinkedIn</a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-        <section id="skills" className="w-full md:h-screen pt-20 flex flex-col justify-center items-center">
-          <header className="flex justify-center items-center">
-            <ShieldCheckIcon className="h-10 w-10 text-blue-500" />
-            <span className="pl-5 text-3xl text-opacity-95">Skills</span>
-          </header>
-          <nav className="pl-10 md:w-2/3 flex-col mx-auto">
-            <ul className="list-square text-2xl font-light leading-10 flex flex-wrap flex-col">
-              {skillArr.map(({ description }: ISkill, index) => (
-                <li key="skill1" className="p-3 hover:bg-blue-500 hover:text-blue-200 transition delay-150 duration-300 ease-out">{description}</li>
+        <section id="skills" className="w-full pt-20 bg-white dark:bg-gray-800">
+          <div className="container mx-auto px-4">
+            <header className="flex justify-center items-center mb-10">
+              <ShieldCheckIcon className="h-10 w-10 text-blue-500" />
+              <span className="pl-5 text-3xl text-opacity-95">Skills</span>
+            </header>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {skillArr.map(({ name, description }: ISkill, index) => (
+                <div key={index} className="flex flex-col items-center p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <ShieldCheckIcon className="h-16 w-16 text-blue-500 mb-4" />
+                  <h3 className="text-xl font-bold mb-2">{name}</h3>
+                  <p className="text-center">{description}</p>
+                </div>
               ))}
-
-            </ul>
-          </nav>
+            </div>
+          </div>
         </section>
-        <section id="experiences" className="w-full md:h-screen pt-20 flex flex-col justify-center items-center">
-          <header className="flex justify-center items-center">
-            <BriefcaseIcon className="h-10 w-10 text-blue-500" />
-            <span className="pl-5 text-3xl text-opacity-95">Experiences</span>
-          </header>
-          <div className="flex flex-col w-full md:p-10 p-2">
-            {
-                experienceArr.map((expr: IExpr, index) => (
-                  <div key={ `${expr.companyName}-${index}` } id={ expr.companyName } className="mb-5 p-5 md:p-10 md:flex hover:shadow text-left">
-                    <div className="md:w-1/3">
-                      <h3 className="text-blue-500 text-xl">{ expr.companyName }</h3>
-                      <h4>{ expr.location }</h4>
-                      <span className="text-gray-400">{ expr.startDate } - { expr.endDate ? expr.endDate : 'current' }</span>
-                      <span className="text-blue-400 block"><a href={`http://${expr.links.companyUrl}`} target="_blank" rel="noreferrer">{expr.links.companyUrl}</a></span>
+        <section id="experiences" className="w-full pt-20 bg-gray-100 dark:bg-gray-900">
+          <div className="container mx-auto px-4">
+            <header className="flex justify-center items-center mb-10">
+              <BriefcaseIcon className="h-10 w-10 text-blue-500" />
+              <span className="pl-5 text-3xl text-opacity-95">Experiences</span>
+            </header>
+            <div className="relative">
+              <div className="hidden md:block border-l-2 border-blue-500 absolute h-full left-1/2 transform -translate-x-1/2"></div>
+              {experienceArr.map((expr: IExpr, index) => (
+                <div key={index} className={`mb-8 flex md:justify-between items-center w-full ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                  <div className="hidden md:block order-1 w-5/12"></div>
+                  <div className="z-20 flex items-center order-1 bg-blue-500 shadow-xl w-8 h-8 rounded-full">
+                    <h1 className="mx-auto font-semibold text-lg text-white">{index + 1}</h1>
+                  </div>
+                  <div className="order-1 bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4">
+                    <h3 className="mb-3 font-bold text-gray-800 dark:text-white text-xl">{expr.companyName}</h3>
+                    <p className="text-base leading-snug tracking-wide text-gray-700 dark:text-gray-300">{expr.achievement}</p>
+                    <p className="text-sm leading-snug tracking-wide text-gray-500 dark:text-gray-400">{expr.startDate} - {expr.endDate}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section id="projects" className="w-full pt-20 bg-white dark:bg-gray-800">
+          <div className="container mx-auto px-4">
+            <header className="flex justify-center items-center mb-10">
+              <DocumentReportIcon className="h-10 w-10 text-blue-500" />
+              <span className="pl-5 text-3xl text-opacity-95">Projects</span>
+            </header>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projectArr.map((project: IProject) => (
+                <div key={project.id} className="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
+                    <div className="flex flex-wrap mb-4">
+                      {project.languages.map((lang: string, index: number) => (
+                        <span key={index} className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{lang}</span>
+                      ))}
                     </div>
-                    <div className="md:w-2/3">
-                      <div className="mb-5">
-                        <span>Role</span>
-                        <p className="text-gray-400">{expr.role}</p>
-                      </div>
-                      <div className="mb-5">
-                        <span>Accomplishment</span>
-                        <p className="text-gray-400">{expr.achievement}</p>
-                      </div>
-                      <div className="mb-5">
-                        <span>Skills, Tools and specializations</span>
-                        <p className="text-gray-400">{expr.skillsDemonstrated.map((skill: string, index) => (<span key={`${skill}-${index}`}>{skills[skill].name}, </span>))}</p>
-                      </div>
+                    <div className="flex justify-between">
+                      <a href={project.links.github.link} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">View on Github</a>
+                      {project.isDeployed && <a href={project.links.deployed} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">View Deployed</a>}
                     </div>
                   </div>
-                  ))
-                }
+                </div>
+              ))}
+            </div>
           </div>
         </section>
-        <section id="projects" className="w-full md:h-screen flex flex-col justify-center items-center">
-          <header className="flex justify-center items-center">
-            <DocumentReportIcon className="h-10 w-10 text-blue-500" />
-            <span className="pl-5 text-3xl text-opacity-95">Projects</span>
-          </header>
-          <div className="flex flex-col w-full">
-              <div className="mb-5 md:flex items-center justify-center flex-wrap md:w-full">
-                {
-                    projectArr.map((project: IProject) => (
-                      <div key={ project.name } id={ project.name } className="md:w-2/5 m-2 p-5 rounded transition delay-150 duration-300 ease-out text-left drop-shadow filter hover:shadow-lg hover:scale-105">
-                        <div>
-                          <span className="text-xl font-medium text-black dark:text-white">{project.name}</span>
-                          <p className="text-gray-500 text-justify">{project.description}</p>
-                          <div>
-                            <span className="font-medium text-black dark:text-white">Technologies</span>
-                            <ul className="my-2 text-gray-500 flex flex-wrap">{ project.languages.map((lang: string, index) => (<li key={ `${index}-${lang}-${project.name}` } className="inline p-2 mr-2">{lang}</li>))}</ul>
-                          </div>
-                          <div>
-                            <span className="font-medium text-black dark:text-white block">Github Link</span>
-                            <a href={ project.links.github.link } target="_blank" rel="noreferrer" className="my-2 text-blue-500">{ `${ project.links.github.link } (${ project.links.github.githubType })`}</a>
-                          </div>
-                        </div>
-                      </div>
-                    ))
-                  }
+        <section id="contacts" className="w-full pt-20 bg-gray-100 dark:bg-gray-900">
+          <div className="container mx-auto px-4">
+            <header className="flex justify-center items-center mb-10">
+              <ExternalLinkIcon className="h-10 w-10 text-blue-500" />
+              <span className="pl-5 text-3xl text-opacity-95">Contacts</span>
+            </header>
+            <div className="flex flex-col md:flex-row justify-center">
+              <div className="max-w-lg">
+                <GoogleReCaptchaProvider reCaptchaKey="6Lf5heorAAAAACOqr5aDdrfSOaM0KRP_nhcaGk37">
+                  <ContactForm />
+                </GoogleReCaptchaProvider>
               </div>
+            </div>
           </div>
-        </section>
-        <section id="contacts" className="w-full md:h-screen pt-20 flex flex-col justify-center items-center">
-          <header className="flex justify-center items-center">
-            <ExternalLinkIcon className="h-10 w-10 text-blue-500" />
-            <span className="pl-5 text-3xl text-opacity-95">Contacts</span>
-          </header>
-          <nav className="md:flex">
-            <ul className="list-none text-left  md:flex justify-end">
-              <li key="facebook" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.facebook.com/sulenchy" target="_blank" rel="noreferrer">Facebook</a></li>
-              <li key="github" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.github.com/sulenchy" target="_blank" rel="noreferrer">Github</a></li>
-              <li key="twitter" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.twitter.com/ababsul" target="_blank" rel="noreferrer">Twitter</a></li>
-              <li key="linkedIn" className="p-5 hover:bg-blue-500 cursor-pointer transition delay-150 duration-300 ease-out"><a href="https://www.linkedin.com/in/abudu-abiodun-751b12b0/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-            </ul>
-          </nav>
-          <GoogleReCaptchaProvider reCaptchaKey="6Lf5heorAAAAACOqr5aDdrfSOaM0KRP_nhcaGk37">
-            <ContactForm />
-          </GoogleReCaptchaProvider>
         </section>
       </article>
-      <footer  className="text-center">
-        <span>Design with <HeartIcon className="inline w-5" /> by abi with ReactJs, TailwindCss and little bit of Typescript</span>
+      <footer className="bg-gray-900 dark:bg-black text-white py-4">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            <p>&copy; 2025 abi.dev</p>
+            <div className="flex space-x-4">
+              <a href="https://www.facebook.com/sulenchy" target="_blank" rel="noreferrer" className="hover:text-blue-500">Facebook</a>
+              <a href="https://www.github.com/sulenchy" target="_blank" rel="noreferrer" className="hover:text-blue-500">Github</a>
+              <a href="https://www.twitter.com/ababsul" target="_blank" rel="noreferrer" className="hover:text-blue-500">Twitter</a>
+              <a href="https://www.linkedin.com/in/abudu-abiodun-751b12b0/" target="_blank" rel="noreferrer" className="hover:text-blue-500">LinkedIn</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );

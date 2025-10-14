@@ -15,15 +15,15 @@
     },
     {
         "id": "2",
-        "companyName": "Andela",
+        "companyName": "The Weather Company (an IBM Business)",
         "skillsDemonstrated": ["1", "4", "9", "5"],
-        "achievement": "I was assigned to work with snaps inc",
-        "startDate": "Oct, 2018",
-        "endDate": "",
+        "achievement": "Worked as a Frontend Developer. Developed and optimized multiple UI components while enhancing the overall user experience of web applications. Contributed to localization efforts by adding support for multiple locales. Occasionally assisted in maintaining an existing Angular application. Collaborated using various tools and technologies, including Jenkins, Redis, Docker, Jira, and JFrog Artifactory.",
+        "startDate": "June, 2022",
+        "endDate": "Jan, 2024",
         "links": {
-            "companyUrl": "www.andela.com"
+            "companyUrl": "https://weather.com/en-NG/weather/today/l/NIXX0022:1:NI?Goto=Redirected"
         },
-        "location": "Lagos, Nigeria",
+        "location": "New York, United State",
         "role": "Frontend Engineer"
     },
     {
@@ -38,6 +38,19 @@
         },
         "location": "New York, United State",
         "role": "Fullstack Software Engineer"
+    },
+    {
+        "id": "4",
+        "companyName": "Hands-on Institute of Information Technology",
+        "skillsDemonstrated": ["10", "6"],
+        "achievement": "I successfully trained at least eight cohorts of students in software development and IT-related disciplines. During my time at HiiT PLC, I designed and developed study guides for key software development courses such as HTML, CSS, C#, and ASP.NET. I also created a structured front-end development curriculum that covered HTML, CSS, and ASP.NET for beginner to intermediate learners. In addition, I contributed to several key organizational decisions that enhanced curriculum delivery and improved overall student engagement.",
+        "startDate": "April, 2014",
+        "endDate": "Sept, 2017",
+        "links": {
+            "companyUrl": ""
+        },
+        "location": "Kano, Nigeria",
+        "role": "Resource Person/Teacher"
     }
   ]
 }

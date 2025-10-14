@@ -1,10 +1,18 @@
 /** include Tailwind styles */
 @import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200;
+}
+
 @layer utilities {
-    bg-about-image {
+    .bg-about-image {
         background-image: url('../public/assets/bg.jpeg');
     }
 }
+
 @custom-variant dark (&:where(.dark, .dark *));
-
-
