@@ -14,7 +14,6 @@ import projectsData from '../public/content/projects.json';
 import skillsData from '../public/content/skills.json';
 import experienceData from '../public/content/experience.json';
 
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import ContactForm from './contactForm';
 
 interface IAbout {
@@ -79,6 +78,7 @@ function App() {
   const skills: ISkillSet = skillArr.reduce((acc, skill) => ({...acc, [skill.id]: skill }), {});
 
   const [about, setAbout] = useState<IAbout | null>(null);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
     setAbout(aboutData);
@@ -97,11 +97,21 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setIsNavOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [headerRef]);
+
   const toggleNav = (): void => {
-    const classList: DOMTokenList | undefined = headerRef.current?.classList;
-    classList?.value.split(' ').includes('hidden') ?
-      headerRef.current?.classList.remove('hidden') :
-      headerRef.current?.classList.add('hidden');
+    setIsNavOpen(!isNavOpen);
   }
 
   const toggleDarkMode = () : void => {
@@ -129,7 +139,7 @@ function App() {
           </div>
           <MenuIcon className="md:hidden w-5 ml-10" onClick={ toggleNav } />
         </div>
-        <div className="w-full md:w-2/3 hidden md:block" ref={ headerRef }>
+        <div className={`w-full md:w-2/3 ${isNavOpen ? 'block' : 'hidden'} md:block`} ref={ headerRef }>
           <nav className="">
             <ul className="list-none text-left  md:flex justify-end">
               <li key="skills" className="p-2 hover:bg-gray-700 cursor-pointer transition delay-150 duration-300 ease-out"><a href="#skills">Skills</a></li>
@@ -239,9 +249,7 @@ function App() {
             </header>
             <div className="flex flex-col md:flex-row justify-center">
               <div className="max-w-lg">
-                <GoogleReCaptchaProvider reCaptchaKey="6Lf5heorAAAAACOqr5aDdrfSOaM0KRP_nhcaGk37">
-                  <ContactForm />
-                </GoogleReCaptchaProvider>
+                <ContactForm />
               </div>
             </div>
           </div>

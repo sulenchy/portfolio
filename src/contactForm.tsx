@@ -1,29 +1,18 @@
 import * as React from "react";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function ContactForm() {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState("");
-  const { executeRecaptcha } = useGoogleReCaptcha();
   const formRef = React.useRef<HTMLFormElement>(null);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
 
-    if (!executeRecaptcha) {
-      console.log("Execute recaptcha not yet available");
-      setError("Recaptcha not available, please try again later.");
-      return;
-    }
-
-    const token = await executeRecaptcha("submit");
-
     if (formRef.current) {
       const formData = new FormData(formRef.current);
 
       formData.append("access_key", "e14a900c-6bf9-4a87-9ba3-a8b2641f2d71");
-      formData.append("g-recaptcha-response", token);
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
