@@ -2,7 +2,6 @@ backend:
   name: github
   repo: sulenchy/portfolio
   branch: master
-  base_url: http://127.0.0.1:5501
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
