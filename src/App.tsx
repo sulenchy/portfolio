@@ -156,7 +156,7 @@ function App() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-center">
               <div className="md:w-1/2 flex justify-center">
-                <img className="rounded-full w-60 h-60 mb-4" src={about?.avatar} alt="abi's headshot"/>
+                <img className="rounded-full w-64 h-64 mb-4" src={about?.avatar} alt="abi's headshot"/>
               </div>
               <div className="md:w-1/2 text-center md:text-left">
                 <h2 className="text-4xl font-bold mb-4">{about?.greeting}</h2>
