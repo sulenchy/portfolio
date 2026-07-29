@@ -9,7 +9,7 @@
         "isDeployed": false,
         "links": {
             "github": {
-                "githubType": "Public",
+                "githubType": "private",
                 "link": "https://github.com/sulenchy/stock-it-app"
             },
             "deployed": ""
@@ -32,17 +32,17 @@
     },
     {
         "id": "3",
-        "name": "Evolym-website",
-        "description": "This is an e-commerce and blog platform built with Next.js, TypeScript, and Tailwind CSS.",
-        "skillDemonstrated": [],
-        "languages": ["Typescript", "Redux Toolkit", "Nextjs", "Tailwindcss"],
-        "isDeployed": false,
+        "name": "pagination-core",
+        "description": "Headless pagination logic for JavaScript (React, Vue, Svelte, Node.js, Vanilla JS). No UI. No dependencies. Just clean, predictable pagination",
+        "skillDemonstrated": ["NPM package creation", "publishing and versioning", "creating a reusable package"],
+        "languages": ["Typescript", "Javascript", "Nodejs", "Tailwindcss"],
+        "isDeployed": true,
         "links": {
             "github": {
-                "githubType": "Private",
-                "link": "https://github.com/sulenchy/evolym-website"
+                "githubType": "Public",
+                "link": "https://github.com/sulenchy/pagination-core"
             },
-            "deployed": ""
+            "deployed": "https://www.npmjs.com/package/pagination-core"
         }
     },
     {
