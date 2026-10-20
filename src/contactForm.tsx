@@ -1,57 +1,67 @@
-import * as React from "react";
+import { useRef, useState, type FormEvent } from "react";
+
+const fieldClass =
+  "mt-2 block w-full rounded-2xl border border-[#14231c]/15 bg-white px-4 py-3 text-sm text-[#14231c] outline-none transition-colors placeholder:text-[#14231c]/35 focus:border-[#14231c]";
 
 export default function ContactForm() {
-  const [result, setResult] = React.useState("");
-  const [error, setError] = React.useState("");
-  const formRef = React.useRef<HTMLFormElement>(null);
+  const [result, setResult] = useState("");
+  const [error, setError] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
+    setError("");
 
-    if (formRef.current) {
-      const formData = new FormData(formRef.current);
+    if (!formRef.current) return;
 
-      formData.append("access_key", "e14a900c-6bf9-4a87-9ba3-a8b2641f2d71");
+    const formData = new FormData(formRef.current);
+    formData.append("access_key", "e14a900c-6bf9-4a87-9ba3-a8b2641f2d71");
 
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (data.success) {
-        setResult("Form Submitted Successfully");
-        formRef.current.reset();
-      } else {
-        console.log("Error", data);
-        setError(data.message);
-        setResult("");
-      }
+    if (data.success) {
+      setResult("Form submitted successfully");
+      formRef.current.reset();
+    } else {
+      setError(data.message);
+      setResult("");
     }
   };
 
   return (
-    <div className="container mx-auto p-4 sm:w-full">
-      <h2 className="text-2xl font-bold mb-4 text-left">For quick response, send me a mail</h2>
-      <form ref={formRef} onSubmit={onSubmit} className="space-y-4">
-        <div className="flex flex-col">
-          <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Name</label>
-          <input type="text" id="name" name="name" required className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+    <div id="contact-form" className="w-full max-w-xl rounded-[1.8rem] bg-white p-6 text-[#14231c] shadow-xl shadow-[#14231c]/10 md:p-8">
+      <h2 className="text-2xl font-semibold tracking-tight">Send a note</h2>
+      <p className="mt-2 text-sm leading-6 text-[#14231c]/60">For a quick response, send a message.</p>
+      <form ref={formRef} onSubmit={onSubmit} className="mt-6 space-y-4">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="name" className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#14231c]/50">Name</label>
+            <input id="name" name="name" type="text" required className={fieldClass} />
+          </div>
+          <div>
+            <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#14231c]/50">Email</label>
+            <input id="email" name="email" type="email" required className={fieldClass} />
+          </div>
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Email</label>
-          <input type="email" id="email" name="email" required className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+        <div>
+          <label htmlFor="message" className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#14231c]/50">Message</label>
+          <textarea id="message" name="message" required rows={4} className={fieldClass} />
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-gray-300 text-left">Message</label>
-          <textarea id="message" name="message" required rows={4} className="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
-        </div>
-        <button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit Form</button>
+        <button
+          type="submit"
+          className="rounded-full bg-[#14231c] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#294637]"
+        >
+          Submit form
+        </button>
       </form>
-      {result && <p className="mt-4 text-green-500">{result}</p>}
-      {error && <p className="mt-4 text-red-500">{error}</p>}
+      {result && <p className="mt-4 text-sm text-[#294637]">{result}</p>}
+      {error && <p className="mt-4 text-sm text-red-700">{error}</p>}
     </div>
   );
 }

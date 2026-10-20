@@ -1,18 +1,173 @@
-/** include Tailwind styles */
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
+
+@theme {
+    --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+    --font-mono: "DM Mono", ui-monospace, monospace;
+}
+
+:root {
+    --pointer-x: 50vw;
+    --pointer-y: 30vh;
+}
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    @apply bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200;
+    margin: 0;
+    min-width: 320px;
+    background: #f4f2ec;
+    color: #14231c;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
 }
 
-@layer utilities {
-    .bg-about-image {
-        background-image: url('../public/assets/bg.jpeg');
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    background: radial-gradient(260px circle at var(--pointer-x) var(--pointer-y), #d9ff5b12, transparent 70%);
+    mix-blend-mode: multiply;
+}
+
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+#work,
+#about,
+#experience,
+#contact,
+#contact-form {
+    scroll-margin-top: 5.5rem;
+}
+
+.animate-nav {
+    animation: 0.7s cubic-bezier(0.16, 1, 0.3, 1) both nav-in;
+}
+
+.hero-intro,
+.hero-line-inner {
+    animation: 0.9s cubic-bezier(0.16, 1, 0.3, 1) both hero-in;
+}
+
+.hero-intro-1 { animation-delay: 0.12s; }
+.hero-intro-2 { animation-delay: 0.22s; }
+.hero-intro-3 { animation-delay: 0.34s; }
+.hero-intro-4 { animation-delay: 0.48s; }
+.hero-intro-5 { animation-delay: 0.62s; }
+
+.hero-line {
+    display: block;
+    overflow: hidden;
+    margin-bottom: -0.08em;
+    padding-bottom: 0.08em;
+}
+
+.hero-line-inner {
+    display: block;
+}
+
+.hero-orbit {
+    animation: 10s ease-in-out infinite orbit-float;
+}
+
+.hero-orbit::after {
+    content: "";
+    position: absolute;
+    top: 13%;
+    left: 13%;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+    background: #14231c;
+    box-shadow: 0 0 0 0.4rem #14231c14;
+    transform-origin: 12.5rem 12.5rem;
+    animation: 16s linear infinite orbit-spin;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(3rem);
+    transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal[data-delay="1"] { transition-delay: 0.12s; }
+.reveal[data-delay="2"] { transition-delay: 0.24s; }
+.reveal[data-delay="3"] { transition-delay: 0.36s; }
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card {
+    transition: border-color 0.4s, background-color 0.4s, box-shadow 0.4s;
+}
+
+.project-card:hover {
+    background-color: #ffffff11;
+    border-color: #ffffff33;
+    box-shadow: 0 2rem 6rem #0000002e;
+}
+
+.project-art > div {
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-art > div {
+    transform: scale(1.025);
+}
+
+@keyframes nav-in {
+    from { opacity: 0; transform: translateY(-100%); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-in {
+    from { opacity: 0; transform: translateY(2.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes orbit-float {
+    0%, 100% { transform: translate(0) rotate(0); }
+    50% { transform: translate(-1rem, 1.5rem) rotate(4deg); }
+}
+
+@keyframes orbit-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
+@media (pointer: coarse) {
+    body::before { display: none; }
+}
