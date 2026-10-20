@@ -44,21 +44,6 @@
             },
             "deployed": "https://www.npmjs.com/package/pagination-core"
         }
-    },
-    {
-        "id": "4",
-        "name": "Vertical Search Engine",
-        "description": "A vertical search engine for students who want to apply for postgraduate research studies and look for potential supervisors at a UK university(Imperial, lancaster and coventry university)",
-        "skillDemonstrated": [],
-        "languages":["minisearch", "Nodejs", "expressjs", "cheerio", "Html", "Javascript"],
-        "isDeployed": false,
-        "links": {
-            "github": {
-                "githubType": "Public",
-                "link": "https://github.com/sulenchy/SearchResearch"
-            },
-            "deployed": ""
-        }
     }
   ]
 }

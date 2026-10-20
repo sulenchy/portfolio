@@ -25,7 +25,6 @@ const PROJECT_META: Record<string, { type: string; accent: string }> = {
   "1": { type: "Desktop app", accent: "bg-[#d9ff5b]" },
   "2": { type: "Mobile app", accent: "bg-[#b7a8ff]" },
   "3": { type: "Open source", accent: "bg-[#ff8d72]" },
-  "4": { type: "Web product", accent: "bg-[#9ad7c2]" },
 };
 
 interface IAbout {
