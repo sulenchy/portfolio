@@ -3,6 +3,7 @@ import aboutData from "../public/content/about.json";
 import experienceData from "../public/content/experience.json";
 import projectsData from "../public/content/projects.json";
 import skillsData from "../public/content/skills.json";
+import writeupsData from "../public/content/writeups.json";
 import ContactForm from "./contactForm";
 
 const GITHUB = "https://github.com/sulenchy";
@@ -11,7 +12,7 @@ const TWITTER = "https://twitter.com/ababsul";
 const FACEBOOK = "https://www.facebook.com/sulenchy";
 const RESUME = "/resume.pdf";
 
-const NAV = ["Work", "About", "Experience"] as const;
+const NAV = ["Work", "About", "Experience", "Writeups"] as const;
 
 const PRACTICES = [
   "Full-stack product engineering",
@@ -59,6 +60,15 @@ interface IExpr {
   endDate: string;
   links: { companyUrl?: string };
   role: string;
+}
+
+interface IWriteup {
+  id: string;
+  title: string;
+  summary: string;
+  date: string;
+  url: string;
+  tags: string[];
 }
 
 const footerLinks = [
@@ -252,6 +262,7 @@ function App() {
   const experienceArr = experienceData.experience as IExpr[];
   const projectArr = projectsData.projects as IProject[];
   const skillArr = skillsData.skills as ISkill[];
+  const writeupArr = writeupsData.writeups as IWriteup[];
   const [menuOpen, setMenuOpen] = useState(false);
 
   const earliestYear = experienceArr.reduce((min, item) => {
@@ -611,6 +622,66 @@ function App() {
                 })}
               </div>
             </div>
+          </div>
+        </section>
+
+        <section id="writeups" className="mx-auto max-w-[1440px] px-5 py-24 md:px-10 md:py-32 lg:px-16">
+          <div data-reveal className="reveal mb-14 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+            <div>
+              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-[#14231c]/50">04 / Writeups</p>
+              <h2 className="text-5xl font-semibold tracking-[-0.055em] md:text-7xl">
+                Notes from
+                <br />
+                <span className="font-serif font-normal italic text-[#14231c]/40">the work.</span>
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-6 text-[#14231c]/55">
+              Essays on learning, building, and the problems that show up in between.
+            </p>
+          </div>
+          <div data-reveal data-delay="1" className="reveal border-b border-[#14231c]/10">
+            {writeupArr.length === 0 ? (
+              <p className="border-t border-[#14231c]/10 py-10 text-sm text-[#14231c]/50">
+                Writeups will show up here.
+              </p>
+            ) : (
+              writeupArr.map((writeup, index) => (
+                <a
+                  key={writeup.id}
+                  href={writeup.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group grid gap-4 border-t border-[#14231c]/10 py-7 transition-colors hover:bg-[#14231c]/[0.03] sm:grid-cols-[7.5rem_1fr_auto] sm:items-start sm:gap-8 sm:px-3"
+                >
+                  <div className="flex items-center justify-between sm:block">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#14231c]/40">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#14231c]/40 sm:mt-2 sm:block">
+                      {writeup.date}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-[-0.035em] transition-colors group-hover:text-[#14231c] md:text-3xl">
+                      {writeup.title}
+                    </h3>
+                    <p className="mt-3 max-w-2xl text-sm leading-6 text-[#14231c]/55">{writeup.summary}</p>
+                    {writeup.tags.length > 0 && (
+                      <ul className="mt-4 flex flex-wrap gap-2">
+                        {writeup.tags.map((tag) => (
+                          <li key={tag} className="rounded-full border border-[#14231c]/10 px-3 py-1 text-[11px] text-[#14231c]/55">
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <span className="grid size-11 place-items-center justify-self-end rounded-full border border-[#14231c]/10 text-[#14231c] transition-transform duration-300 group-hover:rotate-45 group-hover:bg-[#14231c] group-hover:text-white sm:justify-self-auto">
+                    <ArrowUpRight className="size-4" />
+                  </span>
+                </a>
+              ))
+            )}
           </div>
         </section>
       </main>

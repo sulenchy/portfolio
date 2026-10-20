@@ -15,8 +15,15 @@ export default function ContactForm() {
 
     if (!formRef.current) return;
 
+    const accessKey = import.meta.env.ACCESS_KEY;
+    if (!accessKey) {
+      setError("Contact form is not configured.");
+      setResult("");
+      return;
+    }
+
     const formData = new FormData(formRef.current);
-    formData.append("access_key", "e14a900c-6bf9-4a87-9ba3-a8b2641f2d71");
+    formData.append("access_key", accessKey);
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",

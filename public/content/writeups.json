@@ -1,0 +1,52 @@
+{
+  "writeups": [
+    {
+      "id": "1",
+      "title": "TSRX: The Next Evolution of React Development",
+      "summary": "TSRX treats UI as statements instead of JSX expressions, so components stay closer to how the interface is actually described.",
+      "date": "Jun 2026",
+      "url": "https://medium.com/@abuduabiodunsulaiman/tsrx-the-next-evolution-of-react-development-2e04e1340e31",
+      "tags": ["React", "TypeScript"]
+    },
+    {
+      "id": "2",
+      "title": "Introducing pagination-core — Headless, Isomorphic Pagination for JavaScript/Typescript",
+      "summary": "A dependency-free pagination library with the logic only: it runs in the browser and on Node, and leaves the UI to you.",
+      "date": "Mar 2026",
+      "url": "https://medium.com/@abuduabiodunsulaiman/introducing-pagination-core-headless-isomorphic-pagination-for-javascript-typescript-bc30306e4a2b",
+      "tags": ["JavaScript", "TypeScript"]
+    },
+    {
+      "id": "3",
+      "title": "React Re-renders Explained: The Mental Model Most Developers Miss",
+      "summary": "A re-render is the component function running again. The DOM update is a separate step, and that split is where most performance confusion starts.",
+      "date": "Feb 2026",
+      "url": "https://medium.com/@abuduabiodunsulaiman/react-re-renders-explained-the-mental-model-most-developers-miss-00385ce97576",
+      "tags": ["React", "Performance"]
+    },
+    {
+      "id": "4",
+      "title": "Learning a New Framework or Tool: Why Manual Setup Matters More Than CLI Shortcuts",
+      "summary": "Scaffolding a React app by hand shows what each file, dependency, and build tool is for before a CLI hides that structure.",
+      "date": "Dec 2025",
+      "url": "https://medium.com/@abuduabiodunsulaiman/learning-a-new-framework-or-tool-why-manual-setup-matters-more-than-cli-shortcuts-2e82d290fbf0",
+      "tags": ["React", "Learning"]
+    },
+    {
+      "id": "5",
+      "title": "Setup React app with webpack(TS and JS)",
+      "summary": "A from-scratch React and webpack setup in JavaScript, then the same app migrated to TypeScript, without Create React App.",
+      "date": "Jan 2022",
+      "url": "https://medium.com/@abuduabiodunsulaiman/setup-react-app-with-webpack-ts-and-js-da80cf3b7278",
+      "tags": ["React", "Webpack"]
+    },
+    {
+      "id": "6",
+      "title": "Understanding Redux Middleware",
+      "summary": "Middleware sits between dispatch and the reducers. applyMiddleware is how redux-thunk, redux-logger, and similar tools wrap the store.",
+      "date": "May 2019",
+      "url": "https://medium.com/chingu/understanding-redux-middleware-5d8fe63aabfb",
+      "tags": ["Redux", "Chingu"]
+    }
+  ]
+}

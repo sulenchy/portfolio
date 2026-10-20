@@ -103,3 +103,25 @@ collections:
                   { label: "Link", name: "link", widget: "string" }
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Role", name: "role", widget: "string" }
+
+  # ✍️ WRITEUPS COLLECTION
+  - name: "writeups"
+    label: "Writeups"
+    files:
+      - file: "public/content/writeups.json"
+        label: "Writeups"
+        name: "writeups"
+        fields:
+          - label: "Writeups"
+            name: "writeups"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Date", name: "date", widget: "string", hint: "Example: Aug 2018" }
+              - { label: "URL", name: "url", widget: "string" }
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                field: { label: "Tag", name: "tag", widget: "string" }
